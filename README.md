@@ -1,2 +1,2 @@
 # Daydayupppppp
-Practice manual~!
+Practice manual~~!
