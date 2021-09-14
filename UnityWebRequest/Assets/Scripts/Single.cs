@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Single : MonoBehaviour
+public class Single<T> where T: class,new()
 {
-    //单例类
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected static T _instance;
 
-    // Update is called once per frame
-    void Update()
+    public static T Instance
     {
-        
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new T();
+            }
+
+            return _instance;
+        }
     }
+}
+
+public class SingleMono<T> : MonoBehaviour where T : MonoBehaviour
+{
+    //Monobehavior singleon
 }
