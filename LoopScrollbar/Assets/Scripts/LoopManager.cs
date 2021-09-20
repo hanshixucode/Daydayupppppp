@@ -9,6 +9,7 @@ public class LoopManager : MonoBehaviour
     public List<RectTransform> iconlist = new List<RectTransform>();
 
     public int IconNumber;
+    public int MaxNumber = 6;
     
     [SerializeField]
     private ScrollRect _ScrollRect;
@@ -26,22 +27,24 @@ public class LoopManager : MonoBehaviour
 
     private void OnEnable()
     {
-        throw new NotImplementedException();
+
     }
 
     private void OnDestroy()
     {
-        throw new NotImplementedException();
+
     }
     /// <summary>
     /// 初始化数据
     /// </summary>
     private void InitScrollrect()
     {
-        IconNumber = 100;
+        IconNumber = 6;
         _ScrollRect = transform.GetComponent<ScrollRect>();
         ContentRect = transform.GetChild(0).GetComponent<RectTransform>();
         _Scrollbar = transform.parent.GetChild(1).GetComponent<Scrollbar>();
+        ContentRect.sizeDelta = new Vector2(ContentRect.sizeDelta.x, IconNumber * 220);
+        EventDispatch.Instance.TriggerEvent("Loop");
     }
     
 }
