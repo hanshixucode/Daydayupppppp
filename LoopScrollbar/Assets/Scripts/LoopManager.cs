@@ -47,7 +47,7 @@ public class LoopManager : MonoBehaviour
         if (IconNumber > 6)
         {
             ContentRect.sizeDelta = new Vector2(ContentRect.sizeDelta.x,
-                ContentRect.sizeDelta.x + (IconNumber - MaxNumber) * 220);
+                ContentRect.sizeDelta.y + (IconNumber - MaxNumber) * 220);
             EventDispatch.Instance.TriggerEvent("Loop");
         }
     }
