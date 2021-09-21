@@ -34,17 +34,22 @@ public class LoopManager : MonoBehaviour
     {
 
     }
+
     /// <summary>
     /// 初始化数据
     /// </summary>
     private void InitScrollrect()
     {
-        IconNumber = 6;
+        IconNumber = 8;
         _ScrollRect = transform.GetComponent<ScrollRect>();
         ContentRect = transform.GetChild(0).GetComponent<RectTransform>();
         _Scrollbar = transform.parent.GetChild(1).GetComponent<Scrollbar>();
-        ContentRect.sizeDelta = new Vector2(ContentRect.sizeDelta.x, IconNumber * 220);
-        EventDispatch.Instance.TriggerEvent("Loop");
+        if (IconNumber > 6)
+        {
+            ContentRect.sizeDelta = new Vector2(ContentRect.sizeDelta.x,
+                ContentRect.sizeDelta.x + (IconNumber - MaxNumber) * 220);
+            EventDispatch.Instance.TriggerEvent("Loop");
+        }
     }
-    
+
 }
