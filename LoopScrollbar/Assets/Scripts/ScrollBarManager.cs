@@ -17,6 +17,10 @@ public class ScrollBarManager : MonoBehaviour
     private RectTransform ContentRect;
 
     [SerializeField] private float AverageValue;
+
+    private int oldoverflowindex = 0;
+
+    private int iconstartindex = 0;
     
     // Start is called before the first frame update
 
@@ -27,6 +31,7 @@ public class ScrollBarManager : MonoBehaviour
         ContentRect = transform.GetComponent<RectTransform>();
         _Scrollbar = transform.parent.parent.GetChild(1).GetComponent<Scrollbar>();
         _Scrollbar.onValueChanged.AddListener(updatescrollbar);
+        CalculateIconValue();
     }
 
     private void OnEnable()
@@ -59,7 +64,34 @@ public class ScrollBarManager : MonoBehaviour
 
     void updatescrollbar(float data)
     {
-        Debug.Log(data.ToString());
+        #region 测试1
+        if(_loopManager.IconNumber < _loopManager.MaxNumber)//总数小于10的时候，不使用无限滚动计算位置，同时也不会重新刷新icon
+            return;
+        int overflowindex = (int) (Math.Round(((float) (1 - data)) / AverageValue));
+        Debug.Log(""+ overflowindex);
+        if(overflowindex == oldoverflowindex) return;
+        oldoverflowindex = overflowindex;
+        if (overflowindex >= 1)//最少滑动到第11个时候，进行重排
+            {
+                iconstartindex = overflowindex;
+                for (int index = 0; index < _loopManager.MaxNumber; index++)
+                {
+                    iconlist[index].SetAsLastSibling();
+                    iconlist[index].anchoredPosition = new Vector2(iconlist[index].anchoredPosition.x, -(100+(iconstartindex-1)*220));
+                    iconstartindex++;
+                }
+            }
+            else if(overflowindex == 0)
+            {
+                iconstartindex = overflowindex;
+                for (int index = 0; index < _loopManager.MaxNumber; index++)
+                {
+                    iconlist[index].SetAsLastSibling();
+                    iconlist[index].anchoredPosition = new Vector2(iconlist[index].anchoredPosition.x, -(100+iconstartindex*220));
+                    iconstartindex++;
+                }
+            }
+            #endregion
     }
     
     

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(GridLayoutGroup))]
+[RequireComponent(typeof(ContentSizeFitter))]
 public class LoopManager : MonoBehaviour
 {
     public List<RectTransform> iconlist = new List<RectTransform>();
@@ -40,7 +42,7 @@ public class LoopManager : MonoBehaviour
     /// </summary>
     private void InitScrollrect()
     {
-        IconNumber = 8;
+        IconNumber = 20;
         _ScrollRect = transform.GetComponent<ScrollRect>();
         ContentRect = transform.GetChild(0).GetComponent<RectTransform>();
         _Scrollbar = transform.parent.GetChild(1).GetComponent<Scrollbar>();
@@ -48,8 +50,11 @@ public class LoopManager : MonoBehaviour
         {
             ContentRect.sizeDelta = new Vector2(ContentRect.sizeDelta.x,
                 ContentRect.sizeDelta.y + (IconNumber - MaxNumber) * 220);
-            EventDispatch.Instance.TriggerEvent("Loop");
         }
+        
+        //transform.GetChild(0).GetComponent<GridLayoutGroup>().enabled = false;
+        //transform.GetChild(0).GetComponent<ContentSizeFitter>().enabled = false;
+        //EventDispatch.Instance.TriggerEvent("Loop");
     }
 
 }
