@@ -29,7 +29,8 @@ public class LoopManager : MonoBehaviour
 
     private void OnEnable()
     {
-
+        transform.GetChild(0).GetComponent<GridLayoutGroup>().enabled = false;
+        transform.GetChild(0).GetComponent<ContentSizeFitter>().enabled = false;
     }
 
     private void OnDestroy()
@@ -52,8 +53,6 @@ public class LoopManager : MonoBehaviour
                 ContentRect.sizeDelta.y + (IconNumber - MaxNumber) * 220);
         }
         
-        //transform.GetChild(0).GetComponent<GridLayoutGroup>().enabled = false;
-        //transform.GetChild(0).GetComponent<ContentSizeFitter>().enabled = false;
         //EventDispatch.Instance.TriggerEvent("Loop");
     }
 
