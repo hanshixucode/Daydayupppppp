@@ -21,27 +21,28 @@ public class LoopManager : MonoBehaviour
     [SerializeField] 
     private RectTransform ContentRect;
 
+    GridLayoutGroup gridLayoutGroup;
+    ContentSizeFitter contentSizeFitter;
 
     private void Awake()
     {
-        InitScrollrect();
+
     }
 
     private void OnEnable()
     {
-        transform.GetChild(0).GetComponent<GridLayoutGroup>().enabled = false;
-        transform.GetChild(0).GetComponent<ContentSizeFitter>().enabled = false;
+        Init();
     }
 
     private void OnDestroy()
     {
-
+        StopCoroutine(InitScrollrect());
     }
 
     /// <summary>
     /// 初始化数据
     /// </summary>
-    private void InitScrollrect()
+    private void Init()
     {
         IconNumber = 20;
         _ScrollRect = transform.GetComponent<ScrollRect>();
@@ -52,8 +53,29 @@ public class LoopManager : MonoBehaviour
             ContentRect.sizeDelta = new Vector2(ContentRect.sizeDelta.x,
                 ContentRect.sizeDelta.y + (IconNumber - MaxNumber) * 220);
         }
-        
-        //EventDispatch.Instance.TriggerEvent("Loop");
+
+        StartCoroutine(InitScrollrect());
     }
 
+    IEnumerator InitScrollrect()
+    {
+        yield return 0;
+        
+        gridLayoutGroup =transform.GetChild(0).GetComponent<GridLayoutGroup>();
+        gridLayoutGroup.enabled = false;
+        contentSizeFitter = transform.GetChild(0).GetComponent<ContentSizeFitter>();
+        contentSizeFitter.enabled = false;
+        CenterItem();
+        
+    }
+
+    private void CenterItem()
+    {
+        for (int index = 0; index < 6; index++)
+        {
+            iconlist[index].SetAsLastSibling();
+            iconlist[index].anchoredPosition = new Vector2(iconlist[index].anchoredPosition.x, -(100+index*220));
+            iconlist[index].gameObject.SetActive(true);
+        }
+    }
 }
