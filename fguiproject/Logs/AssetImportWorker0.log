@@ -15,11 +15,11 @@ D:/GithubProgram/Daydayupppppp/fguiproject
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-9191
+2091
 Successfully changed project path to: D:/GithubProgram/Daydayupppppp/fguiproject
 D:/GithubProgram/Daydayupppppp/fguiproject
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 42.11 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 33.26 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.18f1 (a7d1c678663c)
 [Subsystems] Discovering subsystems at path D:/Unity/2020.3.18f1/Editor/Data/Resources/UnitySubsystems
@@ -35,37 +35,37 @@ Initialize mono
 Mono path[0] = 'D:/Unity/2020.3.18f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity/2020.3.18f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Unity/2020.3.18f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56660
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56948
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Unity/2020.3.18f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000776 seconds.
+Registered in 0.000852 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 30.81 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 32.86 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.798 seconds
+- Completed reload, in  0.810 seconds
 Domain Reload Profiling:
-	ReloadAssembly (798ms)
-		BeginReloadAssembly (40ms)
+	ReloadAssembly (811ms)
+		BeginReloadAssembly (41ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (335ms)
-			LoadAssemblies (39ms)
+		EndReloadAssembly (328ms)
+			LoadAssemblies (40ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (115ms)
+			SetupTypeCache (112ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (133ms)
+			SetupLoadedEditorAssemblies (131ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (31ms)
+				RefreshPlugins (33ms)
 				BeforeProcessingInitializeOnLoad (10ms)
-				ProcessInitializeOnLoadAttributes (66ms)
+				ProcessInitializeOnLoadAttributes (63ms)
 				ProcessInitializeOnLoadMethodAttributes (22ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -73,34 +73,34 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001517 seconds.
+Registered in 0.001568 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 30.63 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 32.52 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.859 seconds
+- Completed reload, in  0.852 seconds
 Domain Reload Profiling:
-	ReloadAssembly (859ms)
-		BeginReloadAssembly (112ms)
+	ReloadAssembly (853ms)
+		BeginReloadAssembly (110ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (14ms)
-		EndReloadAssembly (703ms)
-			LoadAssemblies (65ms)
+			CreateAndSetChildDomain (13ms)
+		EndReloadAssembly (700ms)
+			LoadAssemblies (66ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
 			SetupTypeCache (218ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (45ms)
+			RebuildScriptCaches (44ms)
 			SetupLoadedEditorAssemblies (275ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (31ms)
-				BeforeProcessingInitializeOnLoad (61ms)
-				ProcessInitializeOnLoadAttributes (167ms)
+				RefreshPlugins (33ms)
+				BeforeProcessingInitializeOnLoad (60ms)
+				ProcessInitializeOnLoadAttributes (166ms)
 				ProcessInitializeOnLoadMethodAttributes (11ms)
 				AfterProcessingInitializeOnLoad (2ms)
 				EditorAssembliesLoaded (0ms)
@@ -109,15 +109,17 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.29 ms, found 3 plugins.
+Shader 'FairyGUI/TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
+Shader 'FairyGUI/TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2090 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 93.0 MB.
-System memory in use after: 93.1 MB.
+Unloading 2313 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 101.3 MB.
+System memory in use after: 101.4 MB.
 
-Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 2529.
-Total: 2.270900 ms (FindLiveObjects: 0.122000 ms CreateObjectMapping: 0.057600 ms MarkObjects: 2.044300 ms  DeleteObjects: 0.046500 ms)
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 2752.
+Total: 2.251800 ms (FindLiveObjects: 0.160300 ms CreateObjectMapping: 0.066500 ms MarkObjects: 1.962900 ms  DeleteObjects: 0.061400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,40 +133,426 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets
-  artifactKey: Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42d402b061de3733987d63b9cc3b64de') in 0.003080 seconds 
-  Import took 0.010021 seconds .
+  path: Assets/FairyGUI/Examples/Resources/UI/Basics_atlas0.png
+  artifactKey: Guid(2639a9e025be642158955609c804baf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Basics_atlas0.png using Guid(2639a9e025be642158955609c804baf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58961dcea9172d78d2b9e7ca7172706a') in 0.078455 seconds 
+  Import took 0.080839 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000242 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Basics_gojg7u.wav
+  artifactKey: Guid(264b41ad74a12f84b96c1912d1f5b5aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Basics_gojg7u.wav using Guid(264b41ad74a12f84b96c1912d1f5b5aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8d645ab783ba141240fc9f12fba44cf') in 0.037725 seconds 
+  Import took 0.039966 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000239 seconds.
-  path: Assets/Scenes
-  artifactKey: Guid(2bc9cbbc88a144447a9376724037b6ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(2bc9cbbc88a144447a9376724037b6ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '564f29a6882f6bedf0f8b4b50e61ebe2') in 0.001393 seconds 
-  Import took 0.004013 seconds .
+  path: Assets/FairyGUI/Examples/Resources/UI/Basics_o4lt7w.wav
+  artifactKey: Guid(87155986ecd4a494fb1bf8a30894be6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Basics_o4lt7w.wav using Guid(87155986ecd4a494fb1bf8a30894be6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0765dd568f4fe6bd94eaf5f1de2e9a28') in 0.006643 seconds 
+  Import took 0.008963 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.450567 seconds.
-  path: Assets/Scripts
-  artifactKey: Guid(c9aca7d7bddb6b94ca73aec2c0c27e3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts using Guid(c9aca7d7bddb6b94ca73aec2c0c27e3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8570c641c2086d2919405e628c0005f9') in 0.001431 seconds 
-  Import took 0.004326 seconds .
+  Time since last request: 108.577659 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI
+  artifactKey: Guid(5d47e13569988ba48b016bb4d47aa8ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI using Guid(5d47e13569988ba48b016bb4d47aa8ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3fff85f00ef9b8d44e20252b0668981') in 0.001434 seconds 
+  Import took 0.004625 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 7.632404 seconds.
-  path: Assets/Plugins
-  artifactKey: Guid(2e45cc75a69727340ad9811e01a24b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins using Guid(2e45cc75a69727340ad9811e01a24b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf5b9eb8281b57af4c5142015455d83e') in 0.001591 seconds 
-  Import took 0.004260 seconds .
+  Time since last request: 98.110067 seconds.
+  path: Assets/FairyGUI/Examples/Resources/Role
+  artifactKey: Guid(02aaf8cbdc6ad5649adb67721d2a8546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/Role using Guid(02aaf8cbdc6ad5649adb67721d2a8546) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '601c5ef45ef6b97d896614b6826935e4') in 0.001666 seconds 
+  Import took 0.004338 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.011607 seconds.
-  path: Assets/Plugins
-  artifactKey: Guid(2e45cc75a69727340ad9811e01a24b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins using Guid(2e45cc75a69727340ad9811e01a24b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf5b9eb8281b57af4c5142015455d83e') in 0.001571 seconds 
-  Import took 0.004196 seconds .
+  Time since last request: 11.615877 seconds.
+  path: Assets/FGUIProject
+  artifactKey: Guid(8275bdffa2ef62243bc36e8f75ad433f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FGUIProject using Guid(8275bdffa2ef62243bc36e8f75ad433f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '047a2466d76b431efd307793ab8c85be') in 0.006276 seconds 
+  Import took 0.008739 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001543 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.38 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.793 seconds
+Domain Reload Profiling:
+	ReloadAssembly (793ms)
+		BeginReloadAssembly (95ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (28ms)
+		EndReloadAssembly (654ms)
+			LoadAssemblies (65ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (223ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (242ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (154ms)
+				ProcessInitializeOnLoadMethodAttributes (5ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Shader 'FairyGUI/TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
+Shader 'FairyGUI/TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2297 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 103.2 MB.
+System memory in use after: 103.4 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2765.
+Total: 2.347500 ms (FindLiveObjects: 0.154200 ms CreateObjectMapping: 0.070500 ms MarkObjects: 2.077400 ms  DeleteObjects: 0.044500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 651.923817 seconds.
+  path: Assets/FairyGUI/Examples/Resources/Role/npc.FBX
+  artifactKey: Guid(87d06d04f2d65d9428debc0b3b5bf4e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/Role/npc.FBX using Guid(87d06d04f2d65d9428debc0b3b5bf4e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70e908db5a4dc99f7d88eb641e36bf78') in 0.336650 seconds 
+  Import took 0.339939 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/FairyGUI/Examples/Resources/Role/npc2.FBX
+  artifactKey: Guid(c91085c40a67a7542b3b1a737e2a9c51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/Role/npc2.FBX using Guid(c91085c40a67a7542b3b1a737e2a9c51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a5238253521b7df339ba1d496b55d24') in 0.046134 seconds 
+  Import took 0.048750 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.300599 seconds.
+  path: Assets/FairyGUI/Examples/Basics
+  artifactKey: Guid(7afac4ff0289dac479c37c0cbf60f745) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Basics using Guid(7afac4ff0289dac479c37c0cbf60f745) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '713fcb41add574cec40eff61c1a1bcf2') in 0.001495 seconds 
+  Import took 0.003976 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000856 seconds.
+  path: Assets/FairyGUI/Examples/Basics
+  artifactKey: Guid(7afac4ff0289dac479c37c0cbf60f745) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Basics using Guid(7afac4ff0289dac479c37c0cbf60f745) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '713fcb41add574cec40eff61c1a1bcf2') in 0.001204 seconds 
+  Import took 0.003502 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.150122 seconds.
+  path: Assets/FairyGUI/Examples/Basics/BasicsMain.cs
+  artifactKey: Guid(a7c649dfadf79df4a963190eded74b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Basics/BasicsMain.cs using Guid(a7c649dfadf79df4a963190eded74b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8a8863744df7c130e429f99b3bd2ffe') in 0.018385 seconds 
+  Import took 0.020870 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.013556 seconds.
+  path: Assets/FairyGUI/Examples/Basics/BasicsMain.cs
+  artifactKey: Guid(a7c649dfadf79df4a963190eded74b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Basics/BasicsMain.cs using Guid(a7c649dfadf79df4a963190eded74b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8a8863744df7c130e429f99b3bd2ffe') in 0.001219 seconds 
+  Import took 0.003638 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.310585 seconds.
+  path: Assets/FairyGUI/Examples/Basics/Window1.cs
+  artifactKey: Guid(f9e33dc08a51fd04883526e4f5129e42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Basics/Window1.cs using Guid(f9e33dc08a51fd04883526e4f5129e42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c723052ab1b1b804c75415dd0897aeb') in 0.001373 seconds 
+  Import took 0.003751 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000969 seconds.
+  path: Assets/FairyGUI/Examples/Basics/Window1.cs
+  artifactKey: Guid(f9e33dc08a51fd04883526e4f5129e42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Basics/Window1.cs using Guid(f9e33dc08a51fd04883526e4f5129e42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c723052ab1b1b804c75415dd0897aeb') in 0.001272 seconds 
+  Import took 0.003421 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.433213 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Bag_atlas0.png
+  artifactKey: Guid(346afb959685d48ed81690b2676beb38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Bag_atlas0.png using Guid(346afb959685d48ed81690b2676beb38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '470212902117187da987f67672e3648f') in 0.016415 seconds 
+  Import took 0.018881 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.836502 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Basics_fui.bytes
+  artifactKey: Guid(a4930dcd8a536f243a39ef553f5d8b0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Basics_fui.bytes using Guid(a4930dcd8a536f243a39ef553f5d8b0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '297995c41a11a891118d577b5dfb2046') in 0.004110 seconds 
+  Import took 0.006760 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000735 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Basics_fui.bytes
+  artifactKey: Guid(a4930dcd8a536f243a39ef553f5d8b0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Basics_fui.bytes using Guid(a4930dcd8a536f243a39ef553f5d8b0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '297995c41a11a891118d577b5dfb2046') in 0.001443 seconds 
+  Import took 0.003685 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.463549 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Bag_fui.bytes
+  artifactKey: Guid(db148c03ade42504588dd6f2f50ecaee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Bag_fui.bytes using Guid(db148c03ade42504588dd6f2f50ecaee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38c63e0c9996fc927ccae614fc919f28') in 0.001731 seconds 
+  Import took 0.004235 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000654 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Bag_fui.bytes
+  artifactKey: Guid(db148c03ade42504588dd6f2f50ecaee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Bag_fui.bytes using Guid(db148c03ade42504588dd6f2f50ecaee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38c63e0c9996fc927ccae614fc919f28') in 0.001478 seconds 
+  Import took 0.003808 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.105195 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/BundleUsage_atlas0.png
+  artifactKey: Guid(b1507578401e008468ea8e425875ccc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/BundleUsage_atlas0.png using Guid(b1507578401e008468ea8e425875ccc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '326e651f739799de90a5673834af10db') in 0.005399 seconds 
+  Import took 0.007898 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001264 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/BundleUsage_atlas0.png
+  artifactKey: Guid(b1507578401e008468ea8e425875ccc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/BundleUsage_atlas0.png using Guid(b1507578401e008468ea8e425875ccc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '326e651f739799de90a5673834af10db') in 0.006983 seconds 
+  Import took 0.009455 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.165641 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/BundleUsage_fui.bytes
+  artifactKey: Guid(350c6259b97d7ac42a77dbed286ffca9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/BundleUsage_fui.bytes using Guid(350c6259b97d7ac42a77dbed286ffca9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2da3b384a72e41009b80bc259e5ecb2f') in 0.001843 seconds 
+  Import took 0.004289 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001104 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/BundleUsage_fui.bytes
+  artifactKey: Guid(350c6259b97d7ac42a77dbed286ffca9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/BundleUsage_fui.bytes using Guid(350c6259b97d7ac42a77dbed286ffca9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2da3b384a72e41009b80bc259e5ecb2f') in 0.001532 seconds 
+  Import took 0.003846 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.194914 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Cooldown_atlas0.png
+  artifactKey: Guid(c0442108e01274a65b9c9ddb2088b4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Cooldown_atlas0.png using Guid(c0442108e01274a65b9c9ddb2088b4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af7391d00c766983d409756615f10b38') in 0.005965 seconds 
+  Import took 0.008494 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001963 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Cooldown_atlas0.png
+  artifactKey: Guid(c0442108e01274a65b9c9ddb2088b4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Cooldown_atlas0.png using Guid(c0442108e01274a65b9c9ddb2088b4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af7391d00c766983d409756615f10b38') in 0.008947 seconds 
+  Import took 0.011344 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.214146 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Cooldown_fui.bytes
+  artifactKey: Guid(359c0adf0408b364fbd36b6173b72867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Cooldown_fui.bytes using Guid(359c0adf0408b364fbd36b6173b72867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd71c3f516b72ae269acd7fd342965745') in 0.001708 seconds 
+  Import took 0.004140 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001443 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Cooldown_fui.bytes
+  artifactKey: Guid(359c0adf0408b364fbd36b6173b72867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Cooldown_fui.bytes using Guid(359c0adf0408b364fbd36b6173b72867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd71c3f516b72ae269acd7fd342965745') in 0.001470 seconds 
+  Import took 0.003783 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.228979 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Curve_atlas0.png
+  artifactKey: Guid(a67c842fc46754e2c84ffafa9aea4298) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Curve_atlas0.png using Guid(a67c842fc46754e2c84ffafa9aea4298) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbdc1c24599ce0a7b88ee6410c14ee14') in 0.014171 seconds 
+  Import took 0.016674 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.224373 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Curve_fui.bytes
+  artifactKey: Guid(310ed4c653b32e44d8ecb7a7dfd523d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Curve_fui.bytes using Guid(310ed4c653b32e44d8ecb7a7dfd523d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40aa0c0f70a6bd442b7711ac5b9f2cd7') in 0.001807 seconds 
+  Import took 0.004269 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.229756 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/CutScene_atlas0.png
+  artifactKey: Guid(37e1dfaa1f62d477eb49d74ede6109a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/CutScene_atlas0.png using Guid(37e1dfaa1f62d477eb49d74ede6109a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '724ea122c34b7666419a4116f20c75df') in 0.008590 seconds 
+  Import took 0.011070 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.185233 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/CutScene_fui.bytes
+  artifactKey: Guid(90e82b98c94b0bd4dbd3b56fffacf0c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/CutScene_fui.bytes using Guid(90e82b98c94b0bd4dbd3b56fffacf0c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaa551c95bd93e93857baaff1a3aaead') in 0.001824 seconds 
+  Import took 0.004348 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000587 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/CutScene_fui.bytes
+  artifactKey: Guid(90e82b98c94b0bd4dbd3b56fffacf0c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/CutScene_fui.bytes using Guid(90e82b98c94b0bd4dbd3b56fffacf0c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaa551c95bd93e93857baaff1a3aaead') in 0.001476 seconds 
+  Import took 0.003755 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.215189 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/EmitNumbers_atlas0.png
+  artifactKey: Guid(e2ec10b04b3e94470bf6123d315ff9c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/EmitNumbers_atlas0.png using Guid(e2ec10b04b3e94470bf6123d315ff9c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f93a87ef40a25ea5f7c43b85a75e36d4') in 0.006535 seconds 
+  Import took 0.009055 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000260 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/EmitNumbers_atlas0.png
+  artifactKey: Guid(e2ec10b04b3e94470bf6123d315ff9c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/EmitNumbers_atlas0.png using Guid(e2ec10b04b3e94470bf6123d315ff9c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f93a87ef40a25ea5f7c43b85a75e36d4') in 0.005138 seconds 
+  Import took 0.007511 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.183767 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/EmitNumbers_fui.bytes
+  artifactKey: Guid(61e3084654685784f84d844e0fc30e4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/EmitNumbers_fui.bytes using Guid(61e3084654685784f84d844e0fc30e4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2f9138c57d59d6bb2d3de77bc0c6028') in 0.001809 seconds 
+  Import took 0.004265 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000924 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/EmitNumbers_fui.bytes
+  artifactKey: Guid(61e3084654685784f84d844e0fc30e4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/EmitNumbers_fui.bytes using Guid(61e3084654685784f84d844e0fc30e4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2f9138c57d59d6bb2d3de77bc0c6028') in 0.001409 seconds 
+  Import took 0.003674 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.210367 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Emoji_atlas0.png
+  artifactKey: Guid(b4f98defb276c48289959754e00cee34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Emoji_atlas0.png using Guid(b4f98defb276c48289959754e00cee34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '402feb6a4fb9cfe06a04c88c1764e752') in 0.007379 seconds 
+  Import took 0.009871 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001531 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Emoji_atlas0.png
+  artifactKey: Guid(b4f98defb276c48289959754e00cee34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Emoji_atlas0.png using Guid(b4f98defb276c48289959754e00cee34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '402feb6a4fb9cfe06a04c88c1764e752') in 0.007901 seconds 
+  Import took 0.010233 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.162157 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Emoji_fui.bytes
+  artifactKey: Guid(703b8b3953da64146a7b4907bdd0c264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Emoji_fui.bytes using Guid(703b8b3953da64146a7b4907bdd0c264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1ecb6045581acb823e3b027a5d31a6f') in 0.001703 seconds 
+  Import took 0.004393 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000457 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Emoji_fui.bytes
+  artifactKey: Guid(703b8b3953da64146a7b4907bdd0c264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Emoji_fui.bytes using Guid(703b8b3953da64146a7b4907bdd0c264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1ecb6045581acb823e3b027a5d31a6f') in 0.001425 seconds 
+  Import took 0.003736 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.172467 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Extension_atlas0.png
+  artifactKey: Guid(1d1b2b4b5ff4040f7aa0b81484ba93e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Extension_atlas0.png using Guid(1d1b2b4b5ff4040f7aa0b81484ba93e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd491f398bd37d7b37629983fbb746a0') in 0.006580 seconds 
+  Import took 0.009098 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001018 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Extension_atlas0.png
+  artifactKey: Guid(1d1b2b4b5ff4040f7aa0b81484ba93e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Extension_atlas0.png using Guid(1d1b2b4b5ff4040f7aa0b81484ba93e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd491f398bd37d7b37629983fbb746a0') in 0.004824 seconds 
+  Import took 0.007422 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.173707 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Extension_fui.bytes
+  artifactKey: Guid(8aa31d075dbbae445abcd6049d3bba22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Extension_fui.bytes using Guid(8aa31d075dbbae445abcd6049d3bba22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21827997d994eb64c3296d4781498248') in 0.001934 seconds 
+  Import took 0.004696 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001194 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Extension_fui.bytes
+  artifactKey: Guid(8aa31d075dbbae445abcd6049d3bba22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Extension_fui.bytes using Guid(8aa31d075dbbae445abcd6049d3bba22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21827997d994eb64c3296d4781498248') in 0.001646 seconds 
+  Import took 0.004378 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.383442 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Filter_atlas0.png
+  artifactKey: Guid(7cdbc3249c2af40c3ab31ef863ea7f08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Filter_atlas0.png using Guid(7cdbc3249c2af40c3ab31ef863ea7f08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28b01bbdaba35a38d4a39e0de7ce2398') in 0.006197 seconds 
+  Import took 0.008697 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001362 seconds.
+  path: Assets/FairyGUI/Examples/Resources/UI/Filter_atlas0.png
+  artifactKey: Guid(7cdbc3249c2af40c3ab31ef863ea7f08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FairyGUI/Examples/Resources/UI/Filter_atlas0.png using Guid(7cdbc3249c2af40c3ab31ef863ea7f08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28b01bbdaba35a38d4a39e0de7ce2398') in 0.009963 seconds 
+  Import took 0.012365 seconds .
 
