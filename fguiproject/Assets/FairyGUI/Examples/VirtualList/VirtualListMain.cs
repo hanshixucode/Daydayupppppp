@@ -6,6 +6,7 @@ public class VirtualListMain : MonoBehaviour
     GComponent _mainView;
     GList _list;
 
+    private LongPressGesture _longPressGesture;
     void Awake()
     {
         UIPackage.AddPackage("UI/VirtualList");
@@ -27,11 +28,32 @@ public class VirtualListMain : MonoBehaviour
 
         _list.itemRenderer = RenderListItem;
         _list.numItems = 1000;
+        foreach (var go in _list.GetChildren())
+        {
+            _longPressGesture = new LongPressGesture(go);
+            _longPressGesture.trigger = 0.5f;
+            _longPressGesture.onAction.Add(delegate(EventContext context)
+            {
+                Debug.LogError("123  " + context.data);
+                Stage.inst.CancelClick(context.inputEvent.touchId);
+            });
+        }
     }
 
     void RenderListItem(int index, GObject obj)
     {
         MailItem item = (MailItem)obj;
+        // _longPressGesture = new LongPressGesture(item);
+        // _longPressGesture.trigger = 0.5f;
+        // _longPressGesture.onAction.Add(delegate(EventContext context)
+        // {
+        //     Debug.LogError("123  " + item.title);
+        //     Stage.inst.CancelClick(context.inputEvent.touchId);
+        // });
+        item.onClick.Add(delegate(EventContext context)
+        {
+            Debug.LogError("321  " + item.title);
+        });
         item.setFetched(index % 3 == 0);
         item.setRead(index % 2 == 0);
         item.setTime("5 Nov 2015 16:24:33");

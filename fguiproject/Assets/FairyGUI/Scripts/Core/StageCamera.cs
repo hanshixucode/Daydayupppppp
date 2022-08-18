@@ -6,7 +6,7 @@ namespace FairyGUI
     /// <summary>
     /// Stage Camera is an orthographic camera for UI rendering.
     /// </summary>
-    [ExecuteInEditMode]
+    //[ExecuteInEditMode]
     [AddComponentMenu("FairyGUI/UI Camera")]
     public class StageCamera : MonoBehaviour
     {

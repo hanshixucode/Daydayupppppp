@@ -7,6 +7,7 @@ public class TreeViewMain : MonoBehaviour
     GTree _tree1;
     GTree _tree2;
     string _fileURL;
+    private GList _list;
 
     void Awake()
     {
@@ -78,8 +79,16 @@ public class TreeViewMain : MonoBehaviour
 
     void __clickNode(EventContext context)
     {
-        GTreeNode node = ((GObject)context.data).treeNode;
-        Debug.Log(node.text);
+        if (context.inputEvent.isDoubleClick)
+        {
+            Debug.Log("double click");
+            return;
+        }
+        else
+        {
+            GTreeNode node = ((GObject)context.data).treeNode;
+            Debug.Log(node.text);
+        }
     }
 
     void OnKeyDown(EventContext context)

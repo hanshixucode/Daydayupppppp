@@ -9,7 +9,9 @@
   "libview.twoColumn": false,
   "libview.expandedNodes": [
     "nsz5m8fx",
-    "/"
+    "/",
+    "nsz5m8fx",
+    "/Folder/"
   ],
   "doc.openedDocs": [
     "ui://nsz5m8fxbn9t0"
