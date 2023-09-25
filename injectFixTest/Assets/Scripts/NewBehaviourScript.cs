@@ -29,8 +29,6 @@ public class NewBehaviourScript : MonoBehaviour
             Debug.Log("Button, Call FuncA, result=" + FuncA());
         }
     }
-
-    [Patch]
     public string FuncA()
     {
         return "Old";
