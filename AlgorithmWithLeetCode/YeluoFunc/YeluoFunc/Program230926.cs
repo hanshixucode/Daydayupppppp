@@ -7,7 +7,7 @@ namespace YeluoFunc
     {
         public static void Main(string[] args)
         {
-            
+            IsValid("()[]{}");
         }
         
         /// <summary>
@@ -15,23 +15,31 @@ namespace YeluoFunc
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public bool IsValid(string s)
+        public static bool IsValid(string s)
         {
             if (s.Length % 2 != 0) return false;
-            Dictionary<string, string> Dic = new Dictionary<string, string>()
-             {
-                 {"(",")"},
-                 {"{",")"},
-                 {"[",")"},
-             };
-            for (int i = 0; i < s.Length;)
+            Stack<char> stack = new Stack<char>();
+            for (int i = 0; i < s.Length;i++)
             {
-                if (Dic.ContainsKey(s[i].ToString()) && s[i + 1].ToString() == Dic[s[i].ToString()])
+                if (s[i] == '(')
                 {
-                    i = i + 2;
-                    continue;
+                    stack.Push(')');
                 }
-
+                else if (s[i] == '{')
+                {
+                    stack.Push('}');
+                }
+                else if (s[i] == '[')
+                {
+                    stack.Push(']');
+                }
+                else if (stack.Count == 0 || stack.Pop() != s[i])
+                {
+                    return false;
+                }
+            }
+            if (stack.Count>0)
+            {
                 return false;
             }
             return true;
