@@ -39,6 +39,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="LuanQiBaZao.cs" />
         <Compile Include="Program230925.cs" />
         <Compile Include="Program230926.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
