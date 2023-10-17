@@ -8,11 +8,31 @@ namespace YeluoFunc
     {
         public static void Main(string[] args)
         {
-            
+            var han = new Han(new bike());
+            han.ride();
         }
     }
 
-    interface Icar
+    public interface Driver
+    {
+        void ride();
+    }
+
+    public class Han : Driver
+    {
+        public Icar car;
+        public Han(Icar car)
+        {
+            this.car = car;
+        }
+        public void ride()
+        {
+            car.Stop();
+            car.Run();
+        }
+    }
+    
+    public interface Icar
     {
         void Run();
         void Stop();
@@ -21,7 +41,7 @@ namespace YeluoFunc
     {
         public void Stop()
         {
-            
+            Console.WriteLine("car");
         }
         public abstract void Run();
     }
@@ -30,7 +50,7 @@ namespace YeluoFunc
     {
         public override void Run()
         {
-            
+            Console.WriteLine("bike");
         }
     }
 }
