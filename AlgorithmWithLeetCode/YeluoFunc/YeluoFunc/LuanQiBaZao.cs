@@ -20,22 +20,31 @@ namespace YeluoFunc
 
     public class Han : Driver
     {
-        public Icar car;
-        public Han(Icar car)
+        public Imusic car;
+        public Han(Imusic car)
         {
             this.car = car;
         }
         public void ride()
         {
-            car.Stop();
-            car.Run();
+            car.Play();
         }
     }
-    
-    public interface Icar
+
+    public interface Iride
     {
         void Run();
         void Stop();
+    }
+    
+    public interface Icar : Iride, Imusic
+    {
+        
+    }
+
+    public interface Imusic
+    {
+        void Play();
     }
     internal abstract class Car : Icar
     {
@@ -44,6 +53,7 @@ namespace YeluoFunc
             Console.WriteLine("car");
         }
         public abstract void Run();
+        public abstract void Play();
     }
 
     internal class bike : Car
@@ -51,6 +61,11 @@ namespace YeluoFunc
         public override void Run()
         {
             Console.WriteLine("bike");
+        }
+        
+        public override void Play()
+        {
+            Console.WriteLine("music bike");
         }
     }
 }
