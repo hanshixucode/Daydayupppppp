@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace YeluoFunc
 {
@@ -9,7 +10,15 @@ namespace YeluoFunc
         public static void Main(string[] args)
         {
             var han = new Han(new bike());
-            han.ride();
+            //han.ride();
+
+            // var bike = new bike();
+            var t = System.Type.GetType("YeluoFunc.bike");
+            object o = Activator.CreateInstance(t);
+            MethodInfo ride = t.GetMethod("Run");
+            ride.Invoke(o, null);
+            // Iride ride = bike;
+            // ride.Stop();
         }
     }
 
@@ -48,7 +57,7 @@ namespace YeluoFunc
     }
     internal abstract class Car : Icar
     {
-        public void Stop()
+        void Iride.Stop()
         {
             Console.WriteLine("car");
         }
