@@ -30,6 +30,26 @@ namespace YeluoFunc
         }
     }
 
+    public interface People<T1, T2>
+    {
+        T1 Name();
+        T2 Id();
+    }
+
+    public class Han : People<string, int>
+    {
+        public string Name()
+        {
+            return null;
+        }
+
+        public int Id()
+        {
+            return 0;
+        }
+    }
+
+
     public class Box<T>
     {
         public T cargo { get; set; }
