@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +12,7 @@ namespace YeluoFunc
     {
         public static void Main(string[] args)
         {
-            var sc = new ServiceCollection();
+            var sc = new ServiceCollection(); 
             sc.AddScoped<ICar, Shadow>();
             sc.AddScoped<ICar, Gti>();
             sc.AddScoped<Driver>();
@@ -27,7 +28,14 @@ namespace YeluoFunc
             Console.WriteLine(box.cargo.Color);
             Console.WriteLine(box2.cargo.Name);
 
+            var han = new Han("hanshixu", 123);
+            han.OnGet += delegate(string name, int id)
+            {
+                Console.WriteLine($"good {name}");
+            };
+            han.GetNameEvent();
         }
+
     }
 
     public interface People<T1, T2>
@@ -38,14 +46,29 @@ namespace YeluoFunc
 
     public class Han : People<string, int>
     {
+        public delegate void GetName(String name, int id);
+        public event GetName OnGet;
+        public void GetNameEvent()
+        {
+            OnGet?.Invoke(name, id);
+        }
+
+        public string name;
+        public int id;
+        public Han(string name, int id)
+        {
+            this.name = name;
+            this.id = id;
+        }
+        
         public string Name()
         {
-            return null;
+            return name;
         }
 
         public int Id()
         {
-            return 0;
+            return id;
         }
     }
 
