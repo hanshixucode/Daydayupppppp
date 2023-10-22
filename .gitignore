@@ -81,3 +81,4 @@ UnityPackageManager
 /.vs/
 /x64/
 *.rej
+QuickC/cmake-build-debug/
