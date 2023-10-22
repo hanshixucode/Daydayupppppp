@@ -80,3 +80,4 @@ UnityPackageManager
 
 /.vs/
 /x64/
+*.rej
