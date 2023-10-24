@@ -40,6 +40,10 @@ namespace YeluoFunc
             ChangeAge(ref xx);
             xx.GetAge();
             Console.WriteLine(tempAge);
+
+            //可空类型NULL
+            string tempNull = null;
+            var test = tempNull ?? "nope";
         }
 
         //引用类型传递
