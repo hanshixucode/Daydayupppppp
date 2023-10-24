@@ -34,8 +34,47 @@ namespace YeluoFunc
                 Console.WriteLine($"good {name}");
             };
             han.GetNameEvent();
+
+            var xx = new PeopleParme(26);
+            xx.HappyBirthDay();
+            xx.GetAge();
         }
 
+    }
+
+    //结构体
+    public interface IPeopleParme
+    {
+        void GetAge();
+    }
+    public struct PeopleParme : IPeopleParme
+    {
+        private int age;
+        public int Age
+        {
+            get
+            {
+                return age;
+            }
+            set
+            {
+                age = value;
+            }
+        }
+
+        public PeopleParme(int age)
+        {
+            this.age = age;
+        }
+
+        public void HappyBirthDay()
+        {
+            Age++;
+        }
+        public void GetAge()
+        {
+            Console.WriteLine($"age = {age}");
+        }
     }
 
     public interface People<T1, T2>
@@ -46,15 +85,23 @@ namespace YeluoFunc
 
     public class Han : People<string, int>
     {
+        public const string defaultName = "Hanshixu";
         public delegate void GetName(String name, int id);
         public event GetName OnGet;
         public void GetNameEvent()
         {
             OnGet?.Invoke(name, id);
+            Console.WriteLine(Level);
         }
 
         public string name;
         public int id;
+
+        private string level = "10";
+        public string Level
+        {
+            get;
+        }
         public Han(string name, int id)
         {
             this.name = name;
@@ -121,4 +168,5 @@ namespace YeluoFunc
             Console.WriteLine("ang ang ang");
         }
     }
+    
 }
