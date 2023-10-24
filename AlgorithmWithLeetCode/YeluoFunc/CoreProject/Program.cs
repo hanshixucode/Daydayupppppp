@@ -36,8 +36,16 @@ namespace YeluoFunc
             han.GetNameEvent();
 
             var xx = new PeopleParme(26);
-            xx.HappyBirthDay();
+            xx.HappyBirthDay(out int tempAge);
+            ChangeAge(ref xx);
             xx.GetAge();
+            Console.WriteLine(tempAge);
+        }
+
+        //引用类型传递
+        public static void ChangeAge(ref PeopleParme peopleParme)
+        {
+            peopleParme.Age = 1;
         }
 
     }
@@ -67,9 +75,10 @@ namespace YeluoFunc
             this.age = age;
         }
 
-        public void HappyBirthDay()
+        public void HappyBirthDay(out int result)
         {
             Age++;
+            result = Age;
         }
         public void GetAge()
         {
