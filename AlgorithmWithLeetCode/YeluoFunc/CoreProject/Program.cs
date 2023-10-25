@@ -44,6 +44,10 @@ namespace YeluoFunc
             //可空类型NULL
             string tempNull = null;
             var test = tempNull ?? "nope";
+
+            A a = new A();
+            B b = new B();
+            C c = new C();
         }
 
         //引用类型传递
@@ -127,6 +131,11 @@ namespace YeluoFunc
             this.name = name;
             this.id = id;
         }
+
+        ~Han()
+        {
+            Console.WriteLine("end");
+        }
         
         public string Name()
         {
@@ -186,6 +195,31 @@ namespace YeluoFunc
         public void Run()
         {
             Console.WriteLine("ang ang ang");
+        }
+    }
+
+    public class A
+    {
+        public A()
+        {
+            Console.WriteLine("A");
+        }
+    }
+
+    public class B : A
+    {
+        //派生构造函数
+        public B() : base()
+        {
+            Console.WriteLine("B");
+        }
+    }
+
+    public class C : B
+    {
+        public C()
+        {
+            Console.WriteLine("C");
         }
     }
     
