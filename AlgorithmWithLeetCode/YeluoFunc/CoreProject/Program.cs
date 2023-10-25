@@ -46,6 +46,21 @@ namespace YeluoFunc
             var test = tempNull ?? "nope";
 
             A a = new A();
+            
+            using (var instance = new A())
+            {
+                //异常抛出不会影响Dispose
+                Console.WriteLine("doing");
+                //throw new Exception("异常抛出");
+            }
+            // {
+            //     不会触发Dispose
+            //     var instance = new A();
+            //     Console.WriteLine("doing");
+            //     throw new Exception("异常抛出");
+            //     instance.Dispose();
+            // }
+
             B b = new B();
             C c = new C();
         }
@@ -198,8 +213,13 @@ namespace YeluoFunc
         }
     }
 
-    public class A
+    public class A : IDisposable
     {
+
+        public void Dispose()
+        {
+            Console.WriteLine("dispose");
+        }
         public A()
         {
             Console.WriteLine("A");
@@ -222,5 +242,46 @@ namespace YeluoFunc
             Console.WriteLine("C");
         }
     }
-    
+
+    /// <summary>
+    /// IDisposable 以及析构
+    /// </summary>
+    public class ResourceHolder : IDisposable
+    {
+        private bool _isDisposed = false;
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if(!_isDisposed)
+            {
+            {
+                if (disposing)
+                {
+                    //dispose
+                }
+            }}
+
+            _isDisposed = true;
+        }
+
+        ~ResourceHolder()
+        {
+            Dispose(false);
+        }
+
+        public void SomeMethod()
+        {
+            if (_isDisposed)
+            {
+                throw new ObjectDisposedException("ResourceHolder");
+            }
+            
+            //method implementation...
+        }
+    }
 }
