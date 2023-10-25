@@ -54,6 +54,13 @@ namespace YeluoFunc
 
     }
 
+    //拓展方法
+    public static class StringExtension
+    {
+        public static int GetWordCount(this string s) => s.Length;
+        public static int GetId(this Han han) => han.id; 
+    }
+
     //结构体
     public interface IPeopleParme
     {
@@ -106,7 +113,7 @@ namespace YeluoFunc
             OnGet?.Invoke(name, id);
             Console.WriteLine(Level);
         }
-
+        
         public string name;
         public int id;
 
