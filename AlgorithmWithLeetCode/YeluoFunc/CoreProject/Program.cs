@@ -44,10 +44,8 @@ namespace YeluoFunc
             //可空类型NULL
             string tempNull = null;
             var test = tempNull ?? "nope";
-
-            A a = new A();
             
-            using (var instance = new A())
+            using (var ResourceHolder = new ResourceHolder())
             {
                 //异常抛出不会影响Dispose
                 Console.WriteLine("doing");
@@ -60,9 +58,7 @@ namespace YeluoFunc
             //     throw new Exception("异常抛出");
             //     instance.Dispose();
             // }
-
-            B b = new B();
-            C c = new C();
+            
         }
 
         //引用类型传递
@@ -262,10 +258,10 @@ namespace YeluoFunc
             {
                 if (disposing)
                 {
-                    //dispose
+                    //dispose 托管资源
                 }
             }}
-
+            //释放非托管资源
             _isDisposed = true;
         }
 
@@ -276,6 +272,7 @@ namespace YeluoFunc
 
         public void SomeMethod()
         {
+            //something do...
             if (_isDisposed)
             {
                 throw new ObjectDisposedException("ResourceHolder");
