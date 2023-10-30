@@ -69,6 +69,11 @@ namespace YeluoFunc
 
     }
 
+    unsafe class UnsafeClass
+    {
+        private int* pWidth, pHeight;
+    }
+
     //拓展方法
     public static class StringExtension
     {
