@@ -79,6 +79,20 @@ namespace YeluoFunc
 
     public unsafe class Pointer
     {
+        struct MyStruct
+        {
+            public long X;
+            public float F;
+        }
+
+        protected internal class MyClass
+        {
+            public long X;
+            public float F;
+        }
+
+        private MyStruct* pStruct;
+        
         public void Test()
         {
             int x = 10;
@@ -86,8 +100,27 @@ namespace YeluoFunc
             pX = &x; //寻址
             pY = pX; 
             *pY = 20;//间接寻址
+            ulong y = (ulong)pX;
+            int* pD = (int*)y;
             Console.WriteLine($"{x}");
+            Console.WriteLine($"{(ulong)pX}");
             // 20;
+
+            //结构体指针
+            var myStruct = new MyStruct();
+            pStruct = &myStruct;
+            (*pStruct).X = 4;
+            pStruct->X = 4;
+            var pL = &(myStruct.X);
+            
+            //类成员指针
+            var myObj = new MyClass();
+            //long* pL = &(myObj.X);
+            fixed (long* pObj = &(myObj.X))
+            {
+                //do something...
+            }
+
         }
     }
     
