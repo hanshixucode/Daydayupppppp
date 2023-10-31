@@ -69,10 +69,28 @@ namespace YeluoFunc
 
     }
 
+    //指针
     unsafe class UnsafeClass
     {
         private int* pWidth, pHeight;
+        private double* pResult;
+        private byte*[] pFlags;
     }
+
+    public unsafe class Pointer
+    {
+        public void Test()
+        {
+            int x = 10;
+            int* pX, pY;
+            pX = &x; //寻址
+            pY = pX; 
+            *pY = 20;//间接寻址
+            Console.WriteLine($"{x}");
+            // 20;
+        }
+    }
+    
 
     //拓展方法
     public static class StringExtension
