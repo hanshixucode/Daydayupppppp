@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animals.Lib", "Animals.Lib\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointerExample", "PointerExample\PointerExample.csproj", "{5EB138D6-9A03-4F3B-88F9-6A45081DFBB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericProject", "GenericProject\GenericProject.csproj", "{AB5ECA28-B9C3-4F11-BE81-5EF6BB193623}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{5EB138D6-9A03-4F3B-88F9-6A45081DFBB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EB138D6-9A03-4F3B-88F9-6A45081DFBB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EB138D6-9A03-4F3B-88F9-6A45081DFBB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB5ECA28-B9C3-4F11-BE81-5EF6BB193623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5ECA28-B9C3-4F11-BE81-5EF6BB193623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5ECA28-B9C3-4F11-BE81-5EF6BB193623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5ECA28-B9C3-4F11-BE81-5EF6BB193623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
