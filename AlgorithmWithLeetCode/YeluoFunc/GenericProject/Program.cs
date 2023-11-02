@@ -9,9 +9,19 @@ namespace Generic
     {
         public static void Main()
         {
-            
+            var list1 = new LinkedList<int>();
+            list1.AddLast(1);
+            list1.AddLast(2);
+            list1.AddLast(3);
+
+            var manager = new DocumentManager<Document>();
+            var doc = new Document("hsx", "123");
+            manager.AddDocment(doc);
+            manager.DisplayAllDocuments();
         }
     }
+
+    #region 链表
     public class LinkedListNode<T>
     {
         public LinkedListNode(T value)
@@ -31,7 +41,7 @@ namespace Generic
         public LinkedListNode<T> AddLast(T node)
         {
             var newNode = new LinkedListNode<T>(node);
-            if (First != null)
+            if (First == null)
             {
                 First = newNode;
                 Last = First;
@@ -62,4 +72,65 @@ namespace Generic
             return GetEnumerator();
         }
     }
+    #endregion
+
+    #region 泛型类
+
+    public interface IDocument
+    {
+        string Title { get; set; }
+        string Content { get; set; }
+    }
+
+    public class Document : IDocument
+    {
+        public Document()
+        {
+            
+        }
+
+        public Document(string title, string conten)
+        {
+            Title = title;
+            Content = conten;
+        }
+        public string Title { get; set; }
+        public string Content { get; set; }
+    }
+    public class DocumentManager<T> where T: IDocument
+    {
+        private readonly Queue<T> docmentQueue = new Queue<T>();
+
+        public void AddDocment(T doc)
+        {
+            lock (this)
+            {
+                docmentQueue.Enqueue(doc);
+            }
+        }
+
+        public T GetDocment()
+        {
+            T doc = default(T);
+            lock (this)
+            {
+                doc = docmentQueue.Dequeue();
+            }
+
+            return doc;
+        }
+
+        public void DisplayAllDocuments()
+        {
+            foreach (T doc in docmentQueue)
+            {
+                Console.WriteLine(doc.Title);
+            }
+        }
+
+        public bool IsDocmentAvailable => docmentQueue.Count > 0;
+    }
+    
+
+    #endregion
 }
