@@ -17,7 +17,9 @@ namespace Generic
             var manager = new DocumentManager<Document>();
             var doc = new Document("hsx", "123");
             manager.AddDocment(doc);
-            manager.DisplayAllDocuments();
+            if(manager.IsDocmentAvailable) manager.DisplayAllDocuments();
+
+            var han = new Han<Han1, Han2>();
         }
     }
 
@@ -130,7 +132,27 @@ namespace Generic
 
         public bool IsDocmentAvailable => docmentQueue.Count > 0;
     }
-    
+
+    public interface HanBase
+    {
+        
+    }
+    public class Han1 : HanBase
+    {
+        public Han1()
+        {
+            
+        }
+    }
+
+    public class Han2 : Han1
+    {
+        
+    }
+    public class Han<T1, T2> where T1 : HanBase , new() where T2 : T1
+    {
+        
+    }
 
     #endregion
 }
