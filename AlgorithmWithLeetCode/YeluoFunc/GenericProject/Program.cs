@@ -19,7 +19,7 @@ namespace Generic
             manager.AddDocment(doc);
             if(manager.IsDocmentAvailable) manager.DisplayAllDocuments();
 
-            var han = new Han<Han1, Han2>();
+            var han = new Han<Han2<int>, Han3>();
         }
     }
 
@@ -137,21 +137,36 @@ namespace Generic
     {
         
     }
-    public class Han1 : HanBase
+    public abstract class Han1<T1, T2> : HanBase
     {
-        public Han1()
+        public abstract T1 Add();
+    }
+
+    public abstract class Han2<T2> : Han1<string, T2>
+    {
+        public abstract T2 Sub();
+    }
+
+    public class Han3 : Han2<int>
+    {
+        public Han3()
         {
             
         }
+        public override string Add()
+        {
+            return null;
+        }
+
+        public override int Sub()
+        {
+            return -1;
+        }
     }
 
-    public class Han2 : Han1
+    public class Han<T1, T2> where T1 : HanBase  where T2 : T1 , new()
     {
-        
-    }
-    public class Han<T1, T2> where T1 : HanBase , new() where T2 : T1
-    {
-        
+
     }
 
     #endregion
