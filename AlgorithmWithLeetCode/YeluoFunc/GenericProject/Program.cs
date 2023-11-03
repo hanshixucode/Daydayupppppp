@@ -20,6 +20,15 @@ namespace Generic
             if(manager.IsDocmentAvailable) manager.DisplayAllDocuments();
 
             var han = new Han<Han2<int>, Han3>();
+            
+            
+            IIndex<Rectangle> rect = RectangleCollection.GetRectangleCollection();
+            IIndex<Shape> shapex = rect;
+
+            for (int i = 0; i < shapex.Count; i++)
+            {
+                Console.WriteLine(shapex[i]);
+            }
         }
     }
 
@@ -133,13 +142,14 @@ namespace Generic
         public bool IsDocmentAvailable => docmentQueue.Count > 0;
     }
 
-    public interface HanBase
+    public interface HanBase<in T>
     {
-        
+        int Test(T obj);
     }
-    public abstract class Han1<T1, T2> : HanBase
+    public abstract class Han1<T1, T2> : HanBase<T1>
     {
         public abstract T1 Add();
+        public abstract int Test(T1 obj);
     }
 
     public abstract class Han2<T2> : Han1<string, T2>
@@ -158,15 +168,80 @@ namespace Generic
             return null;
         }
 
+        public override int Test(string obj)
+        {
+            return 0;
+        }
+
         public override int Sub()
         {
             return -1;
         }
     }
 
-    public class Han<T1, T2> where T1 : HanBase  where T2 : T1 , new()
+    public class Han<T1, T2> where T1 : HanBase<string>  where T2 : T1 , new()
     {
 
+    }
+
+    #endregion
+
+    #region 泛型接口的协变
+
+    public class Shape
+    {
+        public double width { get; set; }
+        public double height { get; set; }
+        public override string ToString() => $"{width} + {height}";
+    }
+
+    public class Rectangle : Shape
+    {
+        
+    }
+    public interface IIndex<out T>
+    {
+        T this[int index] { get; }
+        int Count { get; }
+    }
+
+    public class RectangleCollection : IIndex<Rectangle>
+    {
+        public Rectangle[] data = new Rectangle[3]
+        {
+            new Rectangle() { height = 2, width = 4 },
+            new Rectangle() { height = 3, width = 6 },
+            new Rectangle() { height = 4, width = 8 },
+        };
+
+        public static RectangleCollection _coll;
+
+        public static RectangleCollection GetRectangleCollection()
+        {
+            if (_coll == null)
+            {
+                _coll = new RectangleCollection();
+            }
+
+            return _coll;
+        }
+        public Rectangle this[int index]
+        {
+            get
+            {
+                if (index < 0 || index > data.Length)
+                    throw new ArgumentOutOfRangeException("index");
+                return data[index];
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                return data.Length;
+            }
+        }
     }
 
     #endregion
