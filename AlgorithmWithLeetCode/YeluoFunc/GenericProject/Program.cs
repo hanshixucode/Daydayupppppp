@@ -245,4 +245,35 @@ namespace Generic
     }
 
     #endregion
+
+    #region 泛型结构
+
+    //todo 用的少？
+    public struct Nullable<T> where T : struct
+    {
+        public int this[int index] => throw new NotImplementedException();
+
+        public int Count { get; }
+    }
+
+    #endregion
+    
+    #region 泛型方法
+
+    public class Account
+    {
+        public string Name
+        {
+            get;
+        }
+        public decimal Balance { get; private set; }
+
+        public Account(string name, decimal balance)
+        {
+            Name = name;
+            Balance = balance;
+        }
+    }
+
+    #endregion
 }
