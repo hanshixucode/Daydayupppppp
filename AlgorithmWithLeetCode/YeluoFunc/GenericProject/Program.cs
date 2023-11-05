@@ -243,6 +243,53 @@ namespace Generic
             }
         }
     }
+    
+    //test
+    public interface BaseCarSpeed<in T>
+    {
+        void GetSpeed();
+    }
+
+    public abstract class GTI<T> : BaseCarSpeed<T>
+    {
+        public abstract void GetSpeed();
+    }
+
+    public class SpeedBase
+    {
+        
+    }
+    public class SpeedType : SpeedBase
+    {
+        public int speed { get; set; }
+    }
+    
+    public class GTI8 : GTI<SpeedBase>
+    {
+        public override void GetSpeed()
+        {
+
+        }
+    }
+    
+    public class GTI7 : GTI<SpeedBase>
+    {
+        public override void GetSpeed()
+        {
+            
+        }
+    }
+
+    public class Test
+    {
+        public void Test1()
+        {
+            BaseCarSpeed<SpeedBase> get1 = new GTI7();
+            BaseCarSpeed<SpeedType> get2 = new GTI8();
+            SpeedBase sb = new SpeedType();
+            SpeedType st = new SpeedType();
+        }
+    }
 
     #endregion
 
