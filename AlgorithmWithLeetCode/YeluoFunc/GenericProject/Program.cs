@@ -287,7 +287,6 @@ namespace Generic
             BaseCarSpeed<SpeedBase> get1 = new GTI7();
             BaseCarSpeed<SpeedType> get2 = new GTI8();
             SpeedBase sb = new SpeedType();
-            SpeedType st = new SpeedType();
         }
     }
 
@@ -319,6 +318,33 @@ namespace Generic
         {
             Name = name;
             Balance = balance;
+        }
+    }
+
+    public static class Algo
+    {
+        public static decimal accu(IEnumerable<Account> source)
+        {
+            decimal sum = 0;
+            foreach (Account a in source)
+            {
+                sum += a.Balance;
+            }
+
+            return sum;
+        }
+    }
+    public class ConsoleTest
+    {
+        public void ConsoleRun()
+        {
+            var accouts = new List<Account>()
+            {
+                new Account("han", 100),
+                new Account("zhang", 200),
+            };
+
+            Algo.accu(accouts);
         }
     }
 
