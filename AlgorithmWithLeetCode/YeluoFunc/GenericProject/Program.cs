@@ -29,6 +29,9 @@ namespace Generic
             {
                 Console.WriteLine(shapex[i]);
             }
+
+            var ConsoleTest = new ConsoleTest();
+            ConsoleTest.ConsoleRun();
         }
     }
 
@@ -245,7 +248,7 @@ namespace Generic
     }
     
     //test
-    public interface BaseCarSpeed<in T>
+    public interface BaseCarSpeed<out T>
     {
         void GetSpeed();
     }
@@ -264,7 +267,8 @@ namespace Generic
         public int speed { get; set; }
     }
     
-    public class GTI8 : GTI<SpeedBase>
+    
+    public class GTI8<T> : GTI<T>
     {
         public override void GetSpeed()
         {
@@ -272,7 +276,7 @@ namespace Generic
         }
     }
     
-    public class GTI7 : GTI<SpeedBase>
+    public class GTI7<T> : GTI<T>
     {
         public override void GetSpeed()
         {
@@ -282,11 +286,16 @@ namespace Generic
 
     public class Test
     {
+        public void Tes2(BaseCarSpeed<SpeedBase> speedBase)
+        {
+            
+        }
         public void Test1()
         {
-            BaseCarSpeed<SpeedBase> get1 = new GTI7();
-            BaseCarSpeed<SpeedType> get2 = new GTI8();
-            SpeedBase sb = new SpeedType();
+            BaseCarSpeed<SpeedBase> get1 = new GTI7<SpeedType>();
+            //BaseCarSpeed<SpeedType> get2 = new GTI8<SpeedBase>();
+            
+            Tes2(get1);
         }
     }
 
@@ -306,7 +315,12 @@ namespace Generic
     
     #region 泛型方法
 
-    public class Account
+    public interface IAccout
+    {
+        decimal Balance { get; }
+        string Name { get; }
+    }
+    public class Account : IAccout
     {
         public string Name
         {
@@ -323,12 +337,12 @@ namespace Generic
 
     public static class Algo
     {
-        public static decimal accu(IEnumerable<Account> source)
+        public static T2 accu<T1, T2>(IEnumerable<T1> source, Func<T1,T2,T2> action) where T1 : IAccout
         {
-            decimal sum = 0;
-            foreach (Account a in source)
+            T2 sum = default(T2);
+            foreach ( T1 a in source)
             {
-                sum += a.Balance;
+                sum = action(a, sum);
             }
 
             return sum;
@@ -344,7 +358,10 @@ namespace Generic
                 new Account("zhang", 200),
             };
 
-            Algo.accu(accouts);
+            var sum =  Algo.accu<Account, decimal>(accouts, (account, arg2) =>
+            {
+                return account.Balance + arg2;
+            });
         }
     }
 
