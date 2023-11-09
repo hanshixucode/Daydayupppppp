@@ -66,9 +66,44 @@ namespace ArrayTest
             {
                 Console.WriteLine($"one {person.FirstName}, two {person.LastName}");
             }
+            
+            Array.Sort(persons, new PersonCompare(PersonNameType.FirstName));
+            foreach (Person person in persons)
+            {
+                Console.WriteLine($"one {person.FirstName}, two {person.LastName}");
+            }
         }
     }
 
+    public enum PersonNameType
+    {
+        FirstName,
+        LastName
+    }
+
+    public class PersonCompare : IComparer<Person>
+    {
+        public PersonNameType _personNameType;
+        public PersonCompare(PersonNameType personNameType)
+        {
+            _personNameType = personNameType;
+        }
+        public int Compare(Person x, Person y)
+        {
+            if (ReferenceEquals(x, y)) return 0;
+            if (ReferenceEquals(null, y)) return 1;
+            if (ReferenceEquals(null, x)) return -1;
+            switch (_personNameType)
+            {
+                case PersonNameType.FirstName :
+                    return string.Compare(x.FirstName, y.FirstName);
+                case PersonNameType.LastName :
+                    return string.Compare(x.LastName, y.LastName);
+                default:
+                    throw new ArgumentException("unexpected compare type");
+            }
+        }
+    }
     public class Person : IComparable<Person>
     {
         public string FirstName { get; set; }
