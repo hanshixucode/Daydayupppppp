@@ -7,6 +7,8 @@ void IntCollect();
 
 void ShuiXianHua();
 
+void Multi99();
+
 int main() {
 
 //    const int AMOUNT = 100;
@@ -20,7 +22,8 @@ int main() {
 //    printf(" a%d",a);
 //    GetName();
 //    IntCollect();
-    ShuiXianHua();
+//    ShuiXianHua();
+    Multi99();
     return 0;
 }
 
@@ -79,6 +82,17 @@ void ShuiXianHua()
     }
 }
 
+void Multi99()
+{
+    int n = 0;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= i; ++j) {
+            printf("%d*%d = %d ",j,j,j*j);
+        }
+        printf("\n");
+    }
+}
 
 struct Student {
     int id;
