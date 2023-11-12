@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include "math.h"
 
 void GetName();
 
 void IntCollect();
+
+void ShuiXianHua();
 
 int main() {
 
@@ -16,7 +19,8 @@ int main() {
 //    printf(" a++%d",a++);
 //    printf(" a%d",a);
 //    GetName();
-    IntCollect();
+//    IntCollect();
+    ShuiXianHua();
     return 0;
 }
 
@@ -44,6 +48,33 @@ void IntCollect() {
                         printf(" ");
                 }
             }
+        }
+    }
+}
+
+void ShuiXianHua()
+{
+    int n = 0;
+    scanf("%d", &n);
+    int max = 100;
+    int start = 0;
+    for (int i = 1; i < n - 1; ++i) {
+        max *= 10;
+    }
+    start = max/10;
+    for (int i = start; i < max; ++i) {
+        int num = 0;
+        int sum = 0;
+        int temp = i;
+        while (num < n)
+        {
+            sum += (int)pow(temp%10,n);
+            temp /= 10;
+            num++;
+        }
+        if(sum == i)
+        {
+            printf("%d\n", i);
         }
     }
 }
