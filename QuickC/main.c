@@ -8,6 +8,7 @@ void IntCollect();
 void ShuiXianHua();
 
 void Multi99();
+void PrimeNumber();
 
 int main() {
 
@@ -23,7 +24,8 @@ int main() {
 //    GetName();
 //    IntCollect();
 //    ShuiXianHua();
-    Multi99();
+//    Multi99();
+    PrimeNumber();
     return 0;
 }
 
@@ -94,6 +96,30 @@ void Multi99()
     }
 }
 
+void PrimeNumber()
+{
+    int a,b = 0;
+    scanf("%d %d", &a,&b);
+    int num = 0;
+    int sum = 0;
+    int yes = 0;
+    for (int i = a; i <= b ; ++i) {
+        yes = 0;
+        for (int j = 1; j <= i; ++j) {
+            if(i%j == 0 && j != 1 && j!= i)
+            {
+                yes = 1;
+                break;
+            }
+        }
+        if(yes == 0)
+        {
+            num ++;
+            sum += i;
+        }
+    }
+    printf("%d %d", num,sum);
+}
 struct Student {
     int id;
 };
