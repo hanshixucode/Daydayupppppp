@@ -48,6 +48,21 @@ namespace ArrayTest
 
             Sort ss = new Sort();
             ss.SortTest();
+
+            Person[] ps = new Person[]
+            {
+
+            };
+            DisplayArray(ps);
+        }
+
+        /// <summary>
+        /// 数组支持协变（父类形定义传入子类实现）
+        /// </summary>
+        /// <param name="dtat"></param>
+        public static void DisplayArray(PersonBase[] dtat)
+        {
+            //do something
         }
     }
 
@@ -104,7 +119,12 @@ namespace ArrayTest
             }
         }
     }
-    public class Person : IComparable<Person>
+
+    public abstract class PersonBase
+    {
+        
+    }
+    public class Person : PersonBase, IComparable<Person>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
