@@ -54,13 +54,25 @@ namespace ArrayTest
 
             };
             DisplayArray(ps);
+
+            foreach (var person in ps)
+            {
+                
+            }
+
+            IEnumerator<Person> enumerator = ps.GetEnumerator() as IEnumerator<Person>;
+            while (enumerator.MoveNext())
+            {
+                //enumerator.Current;
+            }
+            
         }
 
         /// <summary>
         /// 数组支持协变（父类形定义传入子类实现）
         /// </summary>
         /// <param name="dtat"></param>
-        public static void DisplayArray(PersonBase[] dtat)
+        public static void DisplayArray(Person[] dtat)
         {
             //do something
         }
@@ -86,6 +98,16 @@ namespace ArrayTest
             foreach (Person person in persons)
             {
                 Console.WriteLine($"one {person.FirstName}, two {person.LastName}");
+            }
+        }
+
+        public void EnumTest()
+        {
+            Object obj = new HelloCollection();
+            var helloworld = new HelloCollection();
+            foreach (var s in helloworld)
+            {
+                Console.WriteLine(s);
             }
         }
     }
@@ -138,6 +160,15 @@ namespace ArrayTest
             }
 
             return result;
+        }
+    }
+
+    public class HelloCollection
+    {
+        public IEnumerator<string> GetEnumerator()
+        {
+            yield return "Hello";
+            yield return "world";
         }
     }
 
