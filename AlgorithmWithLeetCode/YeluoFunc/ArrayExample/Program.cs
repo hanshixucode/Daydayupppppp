@@ -172,4 +172,28 @@ namespace ArrayTest
         }
     }
 
+    public class TestEnum
+    {
+        public string[] txt = new[] { "a", "b", "c", "d" };
+
+        public IEnumerator<string> GetEnumerator()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                yield return txt[i];
+            }
+        }
+
+        /// <summary>
+        /// 所以 元组用来干啥？
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="number"></param>
+        public void OutTest(out string name,out int number)
+        {
+            name = "han";
+            number = 1;
+        }
+    }
+
 }
