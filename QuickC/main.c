@@ -1,41 +1,6 @@
 #include <stdio.h>
 #include "math.h"
 #include "stdbool.h"
-
-void GetName();
-
-void IntCollect();
-
-void ShuiXianHua();
-
-void Multi99();
-
-void PrimeNumber();
-
-int main() {
-    bool s = true;
-    //逗号表达式
-    for (int i = 0, j = 10; i < j; ++i , j--) {
-        printf("%d\n", i);
-    }
-/*    const int AMOUNT = 100;
-    printf("Ok, One Week\n");
-    int a = 0;
-    int b = 0;
-    scanf("%d",&a);
-    scanf("%d", &b);
-    printf("%d",AMOUNT + a + b);
-    printf(" a++%d",a++);
-    printf(" a%d",a);
-    GetName();
-    IntCollect();
-    ShuiXianHua();
-    Multi99();
-    PrimeNumber();*/
-
-    return 0;
-}
-
 void GetName() {
     printf("ssss");
 }
@@ -124,3 +89,27 @@ void PrimeNumber() {
 struct Student {
     int id;
 };
+int main() {
+    bool s = true;
+    //逗号表达式
+    for (int i = 0, j = 10; i < j; ++i , j--) {
+        printf("%d\n", i);
+    }
+    const int AMOUNT = 100;
+    printf("Ok, One Week\n");
+    int a = 0;
+    int b = 0;
+    scanf("%d",&a);
+    scanf("%d", &b);
+    printf("%d",AMOUNT + a + b);
+    printf(" a++%d",a++);
+    printf(" a%d",a);
+    GetName();
+    IntCollect();
+    ShuiXianHua();
+    Multi99();
+    PrimeNumber();
+
+    return 0;
+}
+
