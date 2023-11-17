@@ -4,13 +4,37 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace YeluoFunc
 {
+    //操作符与类型转换
+    public unsafe class Operator
+    {
+        public static void Main(string[] args)
+        {
+            Object o = 5;
+            string s = o as string;
+            Console.WriteLine(s);
+            
+            int k = 0;
+            int* i = &k;
+            int? j = null;
+            j += ++*i; 
+            // k j？
+            Console.WriteLine($"{k.ToString()} {j ?? 1}");
+
+            // long longnumber = 123212312;
+            // object longstring = (object)longnumber;
+            // int intnumber = (int)longstring;
+            // 强制转换的bug
+
+        }
+    }
     //依赖注入
     public class LuanQiBaZao
     {
-        public static void Main(string[] args)
+        public static void Main1(string[] args)
         {
             var sc = new ServiceCollection(); 
             sc.AddScoped<ICar, Shadow>();

@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Reflection;
+using System.Linq;
 
 namespace ArrayTest
 {
@@ -49,23 +54,35 @@ namespace ArrayTest
             Sort ss = new Sort();
             ss.SortTest();
 
-            Person[] ps = new Person[]
+            Person[] persons =
             {
-
+                new Person() { FirstName = "c", LastName = "1" },
+                new Person() { FirstName = "b", LastName = "1" },
+                new Person() { FirstName = "a", LastName = "2" },
             };
-            DisplayArray(ps);
+            DisplayArray(persons);
 
-            foreach (var person in ps)
+            foreach (var person in persons)
             {
                 
             }
 
-            IEnumerator<Person> enumerator = ps.GetEnumerator() as IEnumerator<Person>;
+            IEnumerator enumerator = persons.GetEnumerator();
             while (enumerator.MoveNext())
             {
+                var current = enumerator.Current as Person;
                 //enumerator.Current;
             }
-            
+
+            var p1 = new Person("han", "xu", new DateTime(1997, 2, 25));
+            var p2 = new Person("zhang", "xin", new DateTime(1996, 11, 09));
+            var col = new PersonCollection(p1, p2);
+            Console.WriteLine(col[1]);
+            var temp = col[new DateTime(1997, 2, 25)].GetEnumerator();
+            if (temp.MoveNext())
+            {
+                Console.WriteLine(temp.Current);
+            }
         }
 
         /// <summary>
@@ -146,10 +163,23 @@ namespace ArrayTest
     {
         
     }
+    //自定义索引运算符
     public class Person : PersonBase, IComparable<Person>
     {
+        public DateTime Birthday { get; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public Person()
+        {
+            
+        }
+        public Person(string firstName, string lastName, DateTime birthDay)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Birthday = birthDay;
+        }
         public int CompareTo(Person? other)
         {
             if (other == null) return 1;
@@ -160,6 +190,31 @@ namespace ArrayTest
             }
 
             return result;
+        }
+
+        public override string ToString() => $"{FirstName} {LastName}";
+    }
+
+    /// <summary>
+    /// 索引器应用
+    /// </summary>
+    public class PersonCollection
+    {
+        private Person[] _people;
+
+        public Person this[int index]
+        {
+            get { return _people[index]; }
+            set { _people[index] = value; }
+        }
+
+        public IEnumerable<Person> this[DateTime dateTime] => _people.Where(p => p.Birthday == dateTime);
+
+        public IEnumerable<Person> FindBirthDay(DateTime dateTime) => _people.Where(p => p.Birthday == dateTime);
+        
+        public PersonCollection(params Person[] people)
+        {
+            _people = people.ToArray();
         }
     }
 
