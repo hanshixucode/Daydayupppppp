@@ -12,6 +12,7 @@ namespace ArrayTest
     {
         public static void Main()
         {
+            #region old
             //二维数组 很少用
             // int[,] array2d = new int[3, 3];
             int[,] array2d =
@@ -83,6 +84,11 @@ namespace ArrayTest
             {
                 Console.WriteLine(temp.Current);
             }
+            #endregion
+
+            var test = new Test();
+            test.Test1();
+                        
         }
 
         /// <summary>
@@ -94,7 +100,7 @@ namespace ArrayTest
             //do something
         }
     }
-
+    #region old
     public class Sort
     {
         public void SortTest()
@@ -248,6 +254,62 @@ namespace ArrayTest
         {
             name = "han";
             number = 1;
+        }
+    }
+    #endregion
+
+    ///自定义类型强制转换
+    public struct Currency
+    {
+        public uint Dollars { get; }
+        public ushort Cents { get; }
+
+        public Currency(uint dollars, ushort cents)
+        {
+            Dollars = dollars;
+            Cents = cents;
+        }
+
+        public override string ToString()
+        {
+            return $"${Dollars}.{Cents,-2:00}";
+        }
+        //自定义的强制转换
+        public static implicit operator float(Currency value) => value.Dollars + (value.Cents / 100.0f);
+
+        public static implicit operator Currency(float value)
+        {
+            uint dollars = (uint)value;
+            ushort cents = (ushort)((value - dollars) * 100);
+            return new Currency(dollars, cents);
+        }
+    }
+
+    public class Test
+    {
+        public void Test1()
+        {
+            try
+            {
+                var balnce = new Currency(50, 35);
+                Console.WriteLine(balnce);
+                Console.WriteLine($"balance is {balnce}");
+                float balance2 = balnce;
+                Console.WriteLine(balance2);
+
+                balnce = (Currency)balance2;
+                Console.WriteLine(balnce);
+                checked
+                {
+                    balnce = (Currency)(-50.50);
+                    Console.WriteLine(balnce);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 
