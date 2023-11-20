@@ -289,6 +289,8 @@ namespace ArrayTest
     {
         public void Test1()
         {
+            object o = new Currency(50, 35);
+            Currency c = (Currency)o;
             try
             {
                 var balnce = new Currency(50, 35);
