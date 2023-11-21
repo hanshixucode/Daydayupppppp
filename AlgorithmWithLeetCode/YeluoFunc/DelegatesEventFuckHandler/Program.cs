@@ -30,9 +30,72 @@ namespace FuckC
             Func<int, int> f = i => i + ss;
             ss = 7;
             Console.WriteLine(f(3));
+            
+            //事件
+            var han = new CarDealer();
+            var zhang = new ConSumer("xiaozhang");
+            han.NewCarInfo += zhang.NewCarIsHere;
+            han.NewCar("Gti");
         }
     }
 
+    public class CarInfoEventArgs : EventArgs
+    {
+        private string car;
+
+        public string Car
+        {
+            get
+            {
+                return car;
+            }
+            private set
+            {
+                car = value;
+            }
+        }
+
+        public CarInfoEventArgs(string car)
+        {
+            Car = car;
+        }
+    }
+
+    public class ConSumer
+    {
+        private string _name;
+
+        public ConSumer(string name)
+        {
+            _name = name;
+        }
+
+        public void NewCarIsHere(object sender, CarInfoEventArgs e)
+        {
+            Console.WriteLine($"{_name} is here {e.Car}");
+        }
+        
+    }
+    public class CarDealer
+    {
+        private EventHandler<CarInfoEventArgs> newCarInfo;
+        public event EventHandler<CarInfoEventArgs> NewCarInfo
+        {
+            add
+            {
+                newCarInfo += value;
+            }
+            remove
+            {
+                newCarInfo -= value;
+            }
+        }
+
+        public void NewCar(string car)
+        {
+            newCarInfo?.Invoke(this, new CarInfoEventArgs(car));
+        }
+    }
     internal class BubbleSorter
     {
         delegate void IntInvoker(int x);
