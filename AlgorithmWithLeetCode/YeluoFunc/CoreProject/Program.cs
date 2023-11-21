@@ -5,13 +5,68 @@ using System.Drawing;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace YeluoFunc
 {
+    public class StringTest
+    {
+        //自定义字符串格式
+        public class Person : IFormattable
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+
+            public override string ToString()
+            {
+                return FirstName + "" + LastName;
+            }
+            public virtual string ToString(string format)
+            {
+                return ToString(format, null);
+            }
+            public string ToString(string? format, IFormatProvider? formatProvider)
+            {
+                switch (format)
+                {
+                    case null:
+                    case "A":
+                        return ToString();
+                    case "F":
+                        return FirstName;
+                    case "L":
+                        return LastName;
+                    default:
+                        throw new FormatException($"invalid format string{format}");
+                }
+            }
+        }
+        public static void Main(string[] args)
+        {
+            var ss = new StringBuilder("123123123123123", 200);
+            ss.AppendFormat("qasd");
+            Console.WriteLine(ss);
+
+            var p1 = new Person() { FirstName = "han",LastName = "xu"};
+            Console.WriteLine(p1.ToString("A"));
+
+            //正则表达式
+            string input = @"onqweasdasfdasddasdqwonsdadasd" +
+                           "asd asd asd asd  on asd wa dsa d.";
+            string pattern = "on";
+            MatchCollection matches =
+                Regex.Matches(input, pattern, RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture);
+            foreach (Match nextMatch in matches)
+            {
+                Console.WriteLine(nextMatch.Index);
+            }
+        }
+    }
     //操作符与类型转换
     public unsafe class Operator
     {
-        public static void Main(string[] args)
+        public static void Main2(string[] args)
         {
             Object o = 5;
             string s = o as string;
