@@ -8,9 +8,85 @@ using System.Linq;
 
 namespace ArrayTest
 {
-    public class Program
+    public class ListTemplate
     {
         public static void Main()
+        {
+            List<Age> ages = new List<Age>()
+            {
+                new Age() { id = 1 },
+                new Age() { id = 5 },
+                new Age() { id = 3 },
+                new Age() { id = 4 },
+                new Age() { id = 4 },
+            };
+            ages.Sort(new AgeCompare(CompareType.positive));
+            foreach (Age age in ages)
+            {
+                Console.WriteLine(age);
+            }
+            ages.Sort(new AgeCompare(CompareType.negative));
+            foreach (Age age in ages)
+            {
+                Console.WriteLine(age);
+            }
+        }
+        public class Age
+        {
+            public int id { get; set; }
+            public override string ToString()
+            {
+                return id.ToString();
+            }
+        }
+        public class Age2 : IComparable<Age2>
+        {
+            public int id { get; set; }
+            public override string ToString()
+            {
+                return id.ToString();
+            }
+
+            public int CompareTo(Age2? other)
+            {
+                if (other == null)
+                {
+                    return 1;
+                }
+
+                if (other.id == this.id) return 0;
+                return this.id > other.id ? -1 : 1;
+            }
+        }
+        public enum CompareType
+        {
+            positive,
+            negative
+        }
+        public class AgeCompare : IComparer<Age>
+        {
+            public CompareType Type { get; set; }
+            public AgeCompare(CompareType type)
+            {
+                Type = type;
+            }
+            public int Compare(Age? x, Age? y)
+            {
+                if(x.id == y.id) return 0;
+                if (Type == CompareType.positive)
+                {
+                    return x.id > y.id ? 1 : -1;
+                }
+                else
+                {
+                    return x.id > y.id ? -1 : 1;
+                }
+            }
+        }
+    }
+    public class Program
+    {
+        public void Main()
         {
             #region old
             //二维数组 很少用
