@@ -30,6 +30,7 @@ namespace ArrayTest
             {
                 Console.WriteLine(age);
             }
+            ages.Reverse();
         }
         public class Age
         {
@@ -389,6 +390,44 @@ namespace ArrayTest
                 throw;
             }
         }
+    }
+    //queue
+    public class Documet
+    {
+        public string Title { get; private set; }
+        public string Content { get; private set; }
+
+        public Documet(string title, string content)
+        {
+            Title = title;
+            Content = content;
+        }
+    }
+
+    public class DocumentManager
+    {
+        private readonly Queue<Documet> _documets = new Queue<Documet>();
+
+        public void AddDocument(Documet doc)
+        {
+            lock (this)
+            {
+                _documets.Enqueue(doc);
+            }
+        }
+
+        public Documet GetDocument()
+        {
+            Documet doc = null;
+            lock (this)
+            {
+                doc = _documets.Dequeue();
+            }
+
+            return doc;
+        }
+
+        public bool IsDocumentAvailable => _documets.Count > 0;
     }
 
 }
