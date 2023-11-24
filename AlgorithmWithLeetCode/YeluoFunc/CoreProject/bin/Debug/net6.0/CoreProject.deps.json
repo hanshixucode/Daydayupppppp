@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "CoreProject/1.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "8.0.0-rc.2.23479.6"
+          "Microsoft.Extensions.DependencyInjection": "8.0.0-rc.2.23479.6",
+          "NETStandard.Library": "2.0.3"
         },
         "runtime": {
           "CoreProject.dll": {}
@@ -32,6 +33,12 @@
             "fileVersion": "8.0.23.47906"
           }
         }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
       }
     }
   },
@@ -54,6 +61,20 @@
       "sha512": "sha512-QLTBDvE/E05Xl2UVFXOBFIW0VLn/mMJ8DSbTyK6ODsO3sqDs0fyPqydACTnX/nbGZRrTMeud3XDbUrt24ab1EA==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0-rc.2.23479.6",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0-rc.2.23479.6.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     }
   }
 }
