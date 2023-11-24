@@ -89,13 +89,23 @@ void PrimeNumber() {
 struct Student {
     int id;
 };
+
+void Swap(int* a, int* b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 int main() {
     bool s = true;
     //逗号表达式
     for (int i = 0, j = 10; i < j; ++i , j--) {
         printf("%d\n", i);
     }
-    const int AMOUNT = 100;
+    int a = 1;
+    int b = 2;
+    Swap(&a,&b);
+/*    const int AMOUNT = 100;
     printf("Ok, One Week\n");
     int a = 0;
     int b = 0;
@@ -108,7 +118,7 @@ int main() {
     IntCollect();
     ShuiXianHua();
     Multi99();
-    PrimeNumber();
+    PrimeNumber();*/
 
     return 0;
 }
