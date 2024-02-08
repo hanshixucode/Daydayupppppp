@@ -1,3 +1,5 @@
 # Daydayupppppp
-Practice manual~~!
-set or get
+日常的乱七八糟的东西
+有语法相关的复习
+（应付面试）
+以及一些学习内容
