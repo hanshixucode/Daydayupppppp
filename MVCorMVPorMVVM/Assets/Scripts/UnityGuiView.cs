@@ -2,15 +2,16 @@
 
 namespace MVVM
 {
-    public interface IView
-    {
-        ViewModelBase BindeingContext { get; set; }
+    public interface IView<T> where T : ViewModelBase
+    { 
+        T BindeingContext { get; set; }
     }
-    public class UnityGuiView: MonoBehaviour,IView
+    public class UnityGuiView<T>: MonoBehaviour,IView<T> where T : ViewModelBase
     {
-        public readonly BindableProperty<ViewModelBase> ViewModelProperty = new BindableProperty<ViewModelBase>();
-
-        public ViewModelBase BindeingContext
+        private bool isInit;
+        public readonly BindableProperty<T> ViewModelProperty = new BindableProperty<T>();
+        public readonly PropertyBinder<T> Binder = new PropertyBinder<T>();
+        public T BindeingContext
         {
             get
             {
@@ -18,17 +19,28 @@ namespace MVVM
             }
             set
             {
+                if (!isInit)
+                {
+                    OnInit();
+                    isInit = false;
+                }
                 ViewModelProperty.Value = value;
             }
         }
         
-        protected virtual void OnBindingContextChanged(ViewModelBase oldViewModel, ViewModelBase newViewModel)
+        protected virtual void OnBindingContextChanged(T oldViewModel, T newViewModel)
         {
+            Binder.Unbind(oldViewModel);
+            Binder.Bind(newViewModel);
         }
 
-        public UnityGuiView()
+        protected virtual void OnInit()
         {
             this.ViewModelProperty.OnValueChanged += OnBindingContextChanged;
+        }
+        public UnityGuiView()
+        {
+            
         }
     }
 }

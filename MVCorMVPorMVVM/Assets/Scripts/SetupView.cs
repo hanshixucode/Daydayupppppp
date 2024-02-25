@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MVVM
 {
-    public class SetupView : UnityGuiView
+    public class SetupView : UnityGuiView<SetupViewModel>
     {
         public InputField nameInput;
         public Text nameText;
@@ -29,23 +29,30 @@ namespace MVVM
                 return (SetupViewModel)BindeingContext;
             }
         }
-        
-        protected override void OnBindingContextChanged(ViewModelBase oldViewModel, ViewModelBase newViewModel)
-        {
-            base.OnBindingContextChanged(oldViewModel, newViewModel);
-            SetupViewModel oldVm = oldViewModel as SetupViewModel;
-            if (oldVm != null)
-            {
-                oldVm.Name.OnValueChanged -= NameValueChanged;
-                oldVm.State.OnValueChanged -= BtnValueChanged;
-            }
 
-            if (ViewModel != null)
-            {
-                ViewModel.Name.OnValueChanged += NameValueChanged;
-                ViewModel.State.OnValueChanged += BtnValueChanged;
-            }
+        protected override void OnInit()
+        {
+            base.OnInit();
+            Binder.Add<string>("Name",NameValueChanged);
+            Binder.Add<State>("State",BtnValueChanged);
         }
+
+        // protected override void OnBindingContextChanged(SetupViewModel oldViewModel, SetupViewModel newViewModel)
+        // {
+        //     base.OnBindingContextChanged(oldViewModel, newViewModel);
+        //     SetupViewModel oldVm = oldViewModel as SetupViewModel;
+        //     if (oldVm != null)
+        //     {
+        //         oldVm.Name.OnValueChanged -= NameValueChanged;
+        //         oldVm.State.OnValueChanged -= BtnValueChanged;
+        //     }
+        //
+        //     if (ViewModel != null)
+        //     {
+        //         ViewModel.Name.OnValueChanged += NameValueChanged;
+        //         ViewModel.State.OnValueChanged += BtnValueChanged;
+        //     }
+        // }
 
         private void NameValueChanged(string oldvalue, string newvalue)
         {
