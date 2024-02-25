@@ -1,5 +1,9 @@
 ﻿namespace MVVM
 {
+    /// <summary>
+    /// UI属性绑定
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class BindableProperty<T>
     {
         public delegate void ValueChangedHandler(T oldValye, T newValue);

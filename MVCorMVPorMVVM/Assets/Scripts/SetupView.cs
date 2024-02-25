@@ -37,11 +37,13 @@ namespace MVVM
             if (oldVm != null)
             {
                 oldVm.Name.OnValueChanged -= NameValueChanged;
+                oldVm.State.OnValueChanged -= BtnValueChanged;
             }
 
             if (ViewModel != null)
             {
                 ViewModel.Name.OnValueChanged += NameValueChanged;
+                ViewModel.State.OnValueChanged += BtnValueChanged;
             }
         }
 
@@ -50,9 +52,24 @@ namespace MVVM
             nameText.text = newvalue.ToString();
         }
 
+        private void BtnValueChanged(State oldvalue, State newvalue)
+        {
+            Debug.Log($"{oldvalue.ToString()} change to {newvalue.ToString()}");
+        }
+
         public void NameChanged()
         {
             ViewModel.Name.Value = nameInput.text;
+        }
+
+        public void Join()
+        {
+            ViewModel.State.Value = State.yes;
+        }
+
+        public void Wait()
+        {
+            ViewModel.State.Value = State.no;
         }
     }
 }
