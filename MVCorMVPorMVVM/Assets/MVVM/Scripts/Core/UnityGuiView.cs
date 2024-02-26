@@ -36,6 +36,7 @@ namespace MVVM
 
         protected virtual void OnInit()
         {
+            //只触发一次
             this.ViewModelProperty.OnValueChanged += OnBindingContextChanged;
         }
         public UnityGuiView()

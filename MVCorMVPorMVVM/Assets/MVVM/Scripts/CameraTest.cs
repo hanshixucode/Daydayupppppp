@@ -1,4 +1,5 @@
 ﻿using System;
+using MVVM.Message;
 using UnityEngine;
 
 namespace MVVM
@@ -10,6 +11,10 @@ namespace MVVM
         private void Start()
         {
             SetupView.BindeingContext = new SetupViewModel();
+            MessageAggregator<object>.Instance.Sublisher("OnbtnClick", (sender, args) =>
+            {
+                Debug.Log(args._info);
+            });
         }
     }
 }

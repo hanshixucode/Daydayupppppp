@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MVVM.Message;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,11 +73,13 @@ namespace MVVM
         public void Join()
         {
             ViewModel.State.Value = State.yes;
+            MessageAggregator<object>.Instance.Publisher("OnbtnClick", this, new MessageArgs<object>("Yes"));
         }
 
         public void Wait()
         {
             ViewModel.State.Value = State.no;
+            MessageAggregator<object>.Instance.Publisher("OnbtnClick", this, new MessageArgs<object>("No"));
         }
     }
 }
