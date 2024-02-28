@@ -2503,6 +2503,7 @@ GameObject:
   - component: {fileID: 1824963863}
   - component: {fileID: 1824963862}
   - component: {fileID: 1824963866}
+  - component: {fileID: 1824963867}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2620,6 +2621,18 @@ MonoBehaviour:
   JoinToggle: {fileID: 387554466}
   joinbtn: {fileID: 718888092}
   waitbtn: {fileID: 1791840826}
+--- !u!225 &1824963867
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824963861}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1960245773
 GameObject:
   m_ObjectHideFlags: 0

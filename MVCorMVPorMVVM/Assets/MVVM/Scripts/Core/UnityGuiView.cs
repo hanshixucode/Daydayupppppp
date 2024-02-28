@@ -2,9 +2,13 @@
 
 namespace MVVM
 {
+    /// <summary>
+    /// View基础接口
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IView<T> where T : ViewModelBase
     { 
-        T BindeingContext { get; set; }
+        T BindingContext { get; set; }
         void OnActive();
         void OnShow();
         void OnShowed();
@@ -12,14 +16,13 @@ namespace MVVM
         void OnHidden();
         void OnDisappear();
         void OnDestory();
-        
     }
     public class UnityGuiView<T>: MonoBehaviour,IView<T> where T : ViewModelBase
     {
         private bool isInit;
         public readonly BindableProperty<T> ViewModelProperty = new BindableProperty<T>();
         public readonly PropertyBinder<T> Binder = new PropertyBinder<T>();
-        public T BindeingContext
+        public T BindingContext
         {
             get
             {
@@ -40,16 +43,17 @@ namespace MVVM
         /// 激活View
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void OnActive()
+        public virtual void OnActive()
         {
-            throw new System.NotImplementedException();
+            gameObject.SetActive(true);
+            BindingContext.OnStartShow();
         }
 
         /// <summary>
         /// 显示View
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void OnShow()
+        public virtual void OnShow()
         {
             throw new System.NotImplementedException();
         }
@@ -58,7 +62,7 @@ namespace MVVM
         /// 显示后
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void OnShowed()
+        public virtual void OnShowed()
         {
             throw new System.NotImplementedException();
         }
@@ -67,7 +71,7 @@ namespace MVVM
         /// 隐藏前
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void OnHide()
+        public virtual void OnHide()
         {
             throw new System.NotImplementedException();
         }
@@ -76,7 +80,7 @@ namespace MVVM
         /// 隐藏后
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void OnHidden()
+        public virtual void OnHidden()
         {
             throw new System.NotImplementedException();
         }
@@ -85,7 +89,7 @@ namespace MVVM
         /// 隐藏完成False
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void OnDisappear()
+        public virtual void OnDisappear()
         {
             throw new System.NotImplementedException();
         }
@@ -94,7 +98,7 @@ namespace MVVM
         /// 销毁
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void OnDestory()
+        public virtual void OnDestory()
         {
             throw new System.NotImplementedException();
         }

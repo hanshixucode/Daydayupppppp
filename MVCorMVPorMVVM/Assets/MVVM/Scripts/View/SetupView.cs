@@ -27,7 +27,7 @@ namespace MVVM
         {
             get
             {
-                return (SetupViewModel)BindeingContext;
+                return (SetupViewModel)BindingContext;
             }
         }
 

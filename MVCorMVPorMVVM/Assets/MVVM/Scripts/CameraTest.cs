@@ -10,7 +10,7 @@ namespace MVVM
 
         private void Start()
         {
-            SetupView.BindeingContext = new SetupViewModel();
+            SetupView.BindingContext = new SetupViewModel();
             MessageAggregator<object>.Instance.Sublisher("OnbtnClick", (sender, args) =>
             {
                 Debug.Log(args._info);
