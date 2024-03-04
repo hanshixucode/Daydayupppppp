@@ -2,14 +2,27 @@
 
 var th = new Thread((() =>
 {
-    for (int i = 0; i < 20; i++)
+    try
     {
-        Thread.Sleep(200);
-        Console.WriteLine("Hello, World!");
+        for (int i = 0; i < 20; i++)
+        {
+            Thread.Sleep(200);
+            Console.WriteLine("Hello, World!");
+        }
+    }
+    catch(ThreadInterruptedException)
+    {
+        Console.WriteLine("thread over");
+    }
+    finally
+    {
+        Console.WriteLine("Finish");
     }
 }));
 
 th.Start();
 Console.WriteLine("???");
+Thread.Sleep(1000);
+th.Interrupt();
 th.Join();
 Console.WriteLine("Done");
