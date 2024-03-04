@@ -4,11 +4,15 @@ var th = new Thread((() =>
 {
     try
     {
-        for (int i = 0; i < 20; i++)
+        while (true)
         {
-            Thread.Sleep(200);
-            Console.WriteLine("Hello, World!");
+            Thread.Sleep(1);
         }
+        // for (int i = 0; i < 20; i++)
+        // {
+        //     Thread.Sleep(200);
+        //     Console.WriteLine("Hello, World!");
+        // }
     }
     catch(ThreadInterruptedException)
     {
