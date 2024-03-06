@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MVVM.Message;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,9 +66,16 @@ namespace MVVM
             Debug.Log($"{oldvalue.ToString()} change to {newvalue.ToString()}");
         }
 
-        public void NameChanged()
+        public async void NameChanged()
         {
-            ViewModel.Name.Value = nameInput.text;
+            var text = await ChangeAsync();
+            ViewModel.Name.Value = nameInput.text + text;
+        }
+
+        public async Task<string> ChangeAsync()
+        {
+            await Task.Delay(2000);
+            return "delay2000ms";
         }
 
         public void Join()
