@@ -51,5 +51,13 @@ public class Template : IFoo
         Console.WriteLine("3");
         await Task.Delay(2000);
         Console.WriteLine("4");
+        var res = await Task.Run(Run);
+        Console.WriteLine(res);
+    }
+
+    public int Run()
+    {
+        Thread.Sleep(3000);
+        return 100;
     }
 }
