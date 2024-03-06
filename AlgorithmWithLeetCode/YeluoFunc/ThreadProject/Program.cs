@@ -77,40 +77,40 @@ using System.Collections.Concurrent;
 //         Console.WriteLine("interrupted");
 //     }
 // }
-var queue = new Queue<int>();
-var producer = new Thread(AddNum);
-var customer1 = new Thread(ReadNum);
-var customer2 = new Thread(ReadNum);
-
-producer.Start();
-customer1.Start();
-customer2.Start();
-
-producer.Join();
-customer1.Interrupt();
-customer2.Interrupt();
-customer1.Join();
-customer2.Join();
-
-void AddNum()
-{
-    for (int i = 0; i < 10; i++)
-    {
-        Thread.Sleep(20);
-        queue.Enqueue(i);
-    }
-}
-
-void ReadNum()
-{
-    //lock (producer)
-    {
-        while (true)
-        {
-            if (queue.TryDequeue(out var result))
-            {
-                Console.WriteLine(result);
-            }
-        }
-    }
-}
+// var queue = new Queue<int>();
+// var producer = new Thread(AddNum);
+// var customer1 = new Thread(ReadNum);
+// var customer2 = new Thread(ReadNum);
+//
+// producer.Start();
+// customer1.Start();
+// customer2.Start();
+//
+// producer.Join();
+// customer1.Interrupt();
+// customer2.Interrupt();
+// customer1.Join();
+// customer2.Join();
+//
+// void AddNum()
+// {
+//     for (int i = 0; i < 10; i++)
+//     {
+//         Thread.Sleep(20);
+//         queue.Enqueue(i);
+//     }
+// }
+//
+// void ReadNum()
+// {
+//     //lock (producer)
+//     {
+//         while (true)
+//         {
+//             if (queue.TryDequeue(out var result))
+//             {
+//                 Console.WriteLine(result);
+//             }
+//         }
+//     }
+// }
