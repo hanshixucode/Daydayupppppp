@@ -109,7 +109,7 @@ void ReadNum()
     {
         while (true)
         {
-            if (0 == Interlocked.Exchange(ref usingResource, 1))
+            if (0 == Interlocked.Exchange(ref usingResource, 1)) // == (lock usingResource) 原子操作是线程安全的 可以放心使用此条件来处理多线程任务
             {
                 if (queue.TryDequeue(out var result))
                 {
