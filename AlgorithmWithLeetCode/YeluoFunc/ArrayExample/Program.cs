@@ -12,25 +12,30 @@ namespace ArrayTest
     {
         public static void Main()
         {
-            List<Age> ages = new List<Age>()
+            // List<Age> ages = new List<Age>()
+            // {
+            //     new Age() { id = 1 },
+            //     new Age() { id = 5 },
+            //     new Age() { id = 3 },
+            //     new Age() { id = 4 },
+            //     new Age() { id = 4 },
+            // };
+            // ages.Sort(new AgeCompare(CompareType.positive));
+            // foreach (Age age in ages)
+            // {
+            //     Console.WriteLine(age);
+            // }
+            // ages.Sort(new AgeCompare(CompareType.negative));
+            // foreach (Age age in ages)
+            // {
+            //     Console.WriteLine(age);
+            // }
+            // ages.Reverse();
+            var catlist = new CatList<string>();
+            foreach (var cat in catlist)
             {
-                new Age() { id = 1 },
-                new Age() { id = 5 },
-                new Age() { id = 3 },
-                new Age() { id = 4 },
-                new Age() { id = 4 },
-            };
-            ages.Sort(new AgeCompare(CompareType.positive));
-            foreach (Age age in ages)
-            {
-                Console.WriteLine(age);
+                Console.WriteLine(cat);
             }
-            ages.Sort(new AgeCompare(CompareType.negative));
-            foreach (Age age in ages)
-            {
-                Console.WriteLine(age);
-            }
-            ages.Reverse();
         }
         public class Age
         {
@@ -428,6 +433,60 @@ namespace ArrayTest
         }
 
         public bool IsDocumentAvailable => _documets.Count > 0;
+    }
+
+    public class CatList<T> : IEnumerable<T>
+    {
+        private T[] nameArray;
+
+        public void Add(T item)
+        {
+            
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new CatEnumerator<T>(nameArray);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+
+    public class CatEnumerator<T> : IEnumerator<T>
+    {
+        private T[] _array;
+        private int index = -1;
+        public CatEnumerator(T[] array)
+        {
+            _array = array;
+        }
+        public bool MoveNext()
+        {
+            index++;
+            return index < _array.Length;
+        }
+
+        public void Reset()
+        {
+            index = -1;
+        }
+
+        object IEnumerator.Current => Current;
+
+        public T Current
+        {
+            get
+            {
+                return _array[index];
+            }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
