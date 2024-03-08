@@ -12,6 +12,41 @@ public class ThreadStateMachine
         void UpdateState();
     }
     
+    public class Cat : IStateObject
+    {
+        public void EnterState()
+        {
+            Console.WriteLine("猫猫出击");
+        }
+
+        public void ExitState()
+        {
+            Console.WriteLine("猫猫退出");
+        }
+
+        public void UpdateState()
+        {
+            Console.WriteLine("喵");
+        }
+    }
+    public class Dog : IStateObject
+    {
+        public void EnterState()
+        {
+            Console.WriteLine("狗狗出击");
+        }
+
+        public void ExitState()
+        {
+            Console.WriteLine("狗狗退出");
+        }
+
+        public void UpdateState()
+        {
+            Console.WriteLine("汪");
+        }
+    }
+    
     public class StateMachine
     {
         public int runInterval = 500;
