@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using DG.Tweening;
+using UnityEngine;
 
 namespace MVVM
 {
@@ -10,9 +12,9 @@ namespace MVVM
     { 
         T BindingContext { get; set; }
         void OnActive();
-        void OnShow();
+        void OnShow(bool immediate);
         void OnShowed();
-        void OnHide();
+        void OnHide(bool immediate);
         void OnHidden();
         void OnDisappear();
         void OnDestory();
@@ -38,7 +40,38 @@ namespace MVVM
                 ViewModelProperty.Value = value;
             }
         }
+        /// <summary>
+        /// 显示之后的回掉函数
+        /// </summary>
+        public Action ShowedAction { get; set; }
+        /// <summary>
+        /// 隐藏之后的回掉函数
+        /// </summary>
+        public Action HiddenAction { get; set; }
 
+
+        public void Show(bool immediate, Action call)
+        {
+            if (call != null)
+            {
+                ShowedAction += call;
+            }
+            OnActive();
+            OnShow(immediate);
+            OnShowed();
+        }
+        
+        public void Hide(bool immediate, Action call)
+        {
+            if (call != null)
+            {
+                HiddenAction -= call;
+            }
+            OnHide(immediate);
+            OnHidden();
+            OnDisappear();
+        }
+        
         /// <summary>
         /// 激活View
         /// </summary>
@@ -53,9 +86,18 @@ namespace MVVM
         /// 显示View
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public virtual void OnShow()
+        public virtual void OnShow(bool immediate)
         {
-            throw new System.NotImplementedException();
+            if (immediate)
+            {
+                transform.localScale = Vector3.one;
+                GetComponent<CanvasGroup>().alpha = 1;
+            }
+            else
+            {
+                //延迟显示的动效之类
+                StartAnimatedReveal();
+            }
         }
 
         /// <summary>
@@ -64,16 +106,26 @@ namespace MVVM
         /// <exception cref="NotImplementedException"></exception>
         public virtual void OnShowed()
         {
-            throw new System.NotImplementedException();
+            BindingContext.OnFinishShow();
+            //显示后的回调函数
+            ShowedAction?.Invoke();
         }
 
         /// <summary>
         /// 隐藏前
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public virtual void OnHide()
+        public virtual void OnHide(bool immediate)
         {
-            throw new System.NotImplementedException();
+            if (immediate)
+            {
+                transform.localScale = Vector3.zero;
+            }
+            else
+            {
+                //延迟消失的动效之类
+                StartAnimatedHide();
+            }
         }
 
         /// <summary>
@@ -82,7 +134,8 @@ namespace MVVM
         /// <exception cref="NotImplementedException"></exception>
         public virtual void OnHidden()
         {
-            throw new System.NotImplementedException();
+            HiddenAction?.Invoke();
+            //显示后的回调函数
         }
 
         /// <summary>
@@ -91,7 +144,8 @@ namespace MVVM
         /// <exception cref="NotImplementedException"></exception>
         public virtual void OnDisappear()
         {
-            throw new System.NotImplementedException();
+            gameObject.SetActive(false);
+            BindingContext.OnFinishHide();
         }
 
         /// <summary>
@@ -100,7 +154,9 @@ namespace MVVM
         /// <exception cref="NotImplementedException"></exception>
         public virtual void OnDestory()
         {
-            throw new System.NotImplementedException();
+            BindingContext.OnDestory();
+            BindingContext = null;
+            ViewModelProperty.OnValueChanged = null;
         }
 
         protected virtual void OnBindingContextChanged(T oldViewModel, T newViewModel)
@@ -117,6 +173,33 @@ namespace MVVM
         public UnityGuiView()
         {
             
+        }
+        /// <summary>
+        /// scale:1,alpha:1
+        /// </summary>
+        protected virtual void StartAnimatedReveal()
+        {
+            var canvasGroup = GetComponent<CanvasGroup>();
+            canvasGroup.interactable = false;
+            transform.localScale = Vector3.one;
+
+            canvasGroup.DOFade(1, 0.2f).SetDelay(0.2f).OnComplete(() =>
+            {
+                canvasGroup.interactable = true;
+            });
+        }
+        /// <summary>
+        /// alpha:0,scale:0
+        /// </summary>
+        protected virtual void StartAnimatedHide()
+        {
+            var canvasGroup = GetComponent<CanvasGroup>();
+            canvasGroup.interactable = false;
+            canvasGroup.DOFade(0, 0.2f).SetDelay(0.5f).OnComplete(() =>
+            {
+                transform.localScale = Vector3.zero;
+                canvasGroup.interactable = true;
+            });
         }
     }
 }

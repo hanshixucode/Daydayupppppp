@@ -15,6 +15,10 @@ namespace MVVM
             {
                 Debug.Log(args._info);
             });
+            SetupView.Show(false, () =>
+            {
+                Debug.Log("showed");
+            });
         }
     }
 }
