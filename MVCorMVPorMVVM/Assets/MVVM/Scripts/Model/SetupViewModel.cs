@@ -7,6 +7,12 @@
         public BindableProperty<int> ATK = new BindableProperty<int>();
         public BindableProperty<float> SuccessRate = new BindableProperty<float>();
         public BindableProperty<State> State = new BindableProperty<State>();
+        public BindableProperty<Info> Info = new BindableProperty<Info>();
+
+        public void InitInfo(string name, string job)
+        {
+            Info.Value = new Info() { name = name, job = job };
+        }
     }
     
     /// <summary>

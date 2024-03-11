@@ -24,6 +24,8 @@ namespace MVVM
         public Button joinbtn;
         public Button waitbtn;
 
+        public SubSetupView subSetupView;
+
         public SetupViewModel ViewModel
         {
             get
@@ -37,6 +39,7 @@ namespace MVVM
             base.OnInit();
             Binder.Add<string>("Name",NameValueChanged);
             Binder.Add<State>("State",BtnValueChanged);
+            Binder.Add<Info>("Info",InfoValueChanged);
         }
 
         // protected override void OnBindingContextChanged(SetupViewModel oldViewModel, SetupViewModel newViewModel)
@@ -65,11 +68,18 @@ namespace MVVM
         {
             Debug.Log($"{oldvalue.ToString()} change to {newvalue.ToString()}");
         }
+        
+        private void InfoValueChanged(Info oldvalue, Info newvalue)
+        {
+            subSetupView.BindingContext = new SubSetupViewModel();
+            subSetupView.BindingContext.Init(newvalue);
+        }
 
         public async void NameChanged()
         {
             var text = await ChangeAsync();
             ViewModel.Name.Value = nameInput.text + text;
+            ViewModel.InitInfo(ViewModel.Name.Value, "coder");
         }
 
         public async Task<string> ChangeAsync()
