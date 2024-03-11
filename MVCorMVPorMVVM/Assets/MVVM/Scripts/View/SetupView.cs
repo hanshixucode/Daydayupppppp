@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MVVM.Message;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace MVVM
@@ -26,6 +27,7 @@ namespace MVVM
 
         public SubSetupView subSetupView;
 
+        public EventTrigger eventTrigger;
         public SetupViewModel ViewModel
         {
             get
@@ -40,6 +42,11 @@ namespace MVVM
             Binder.Add<string>("Name",NameValueChanged);
             Binder.Add<State>("State",BtnValueChanged);
             Binder.Add<Info>("Info",InfoValueChanged);
+
+            var entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerClick;
+            entry.callback.AddListener((arg0 => { OnClick();}));
+            eventTrigger.triggers.Add(entry);
         }
 
         // protected override void OnBindingContextChanged(SetupViewModel oldViewModel, SetupViewModel newViewModel)
@@ -58,6 +65,11 @@ namespace MVVM
         //         ViewModel.State.OnValueChanged += BtnValueChanged;
         //     }
         // }
+
+        private void OnClick()
+        {
+            BindingContext?.OnClick.Invoke();
+        }
 
         private void NameValueChanged(string oldvalue, string newvalue)
         {

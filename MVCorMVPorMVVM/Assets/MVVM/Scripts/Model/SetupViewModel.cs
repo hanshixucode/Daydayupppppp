@@ -9,6 +9,9 @@
         public BindableProperty<State> State = new BindableProperty<State>();
         public BindableProperty<Info> Info = new BindableProperty<Info>();
 
+        public delegate void OnClickHandler();
+        public OnClickHandler OnClick;
+        
         public void InitInfo(string name, string job)
         {
             Info.Value = new Info() { name = name, job = job };

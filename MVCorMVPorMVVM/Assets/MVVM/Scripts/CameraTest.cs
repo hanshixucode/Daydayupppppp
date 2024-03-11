@@ -11,6 +11,10 @@ namespace MVVM
         private void Start()
         {
             SetupView.BindingContext = new SetupViewModel();
+            SetupView.BindingContext.OnClick += () =>
+            {
+                Debug.Log("我点击了按钮");
+            };
             MessageAggregator<object>.Instance.Sublisher("OnbtnClick", (sender, args) =>
             {
                 Debug.Log(args._info);
