@@ -1,4 +1,8 @@
-﻿namespace MVVM
+﻿using System;
+using System.Collections.Generic;
+using MVVM.Extensions;
+
+namespace MVVM
 {
     public class SubSetupViewModel : ViewModelBase
     {
@@ -9,6 +13,19 @@
         {
             name.Value = info.name;
             job.Value = info.job;
+        }
+        
+        public SetupViewModel FindParent()
+        {
+            try
+            {
+                return this.Ancestors<SetupViewModel>();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 

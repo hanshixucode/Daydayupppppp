@@ -5,6 +5,8 @@
     /// </summary>
     public class ViewModelBase
     {
+        public ViewModelBase ParentViewModel { get; set; }
+        
         private bool isInit;
         protected bool IsShowed { get; set; }
         protected bool IsShowing { get; set; }

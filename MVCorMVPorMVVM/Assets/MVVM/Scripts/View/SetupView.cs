@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MVVM.Extensions;
 using MVVM.Message;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -47,6 +48,7 @@ namespace MVVM
             entry.eventID = EventTriggerType.PointerClick;
             entry.callback.AddListener((arg0 => { OnClick();}));
             eventTrigger.triggers.Add(entry);
+            
         }
 
         // protected override void OnBindingContextChanged(SetupViewModel oldViewModel, SetupViewModel newViewModel)
@@ -83,8 +85,9 @@ namespace MVVM
         
         private void InfoValueChanged(Info oldvalue, Info newvalue)
         {
-            subSetupView.BindingContext = new SubSetupViewModel();
+            subSetupView.BindingContext = new SubSetupViewModel(){ ParentViewModel = BindingContext};
             subSetupView.BindingContext.Init(newvalue);
+            var parent =  subSetupView.BindingContext.FindParent();
         }
 
         public async void NameChanged()

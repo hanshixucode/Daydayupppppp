@@ -1,4 +1,5 @@
 ﻿using System;
+using MVVM.Extensions;
 using MVVM.Message;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ namespace MVVM
             {
                 Debug.Log("showed");
             });
+            var enuma = SetupView.BindingContext.FindParent();
         }
     }
 }

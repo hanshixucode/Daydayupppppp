@@ -1,4 +1,9 @@
-﻿namespace MVVM
+﻿using System;
+using System.Collections.Generic;
+using MVVM.Extensions;
+using UnityEditor;
+
+namespace MVVM
 {
     public class SetupViewModel : ViewModelBase
     {
@@ -15,6 +20,20 @@
         public void InitInfo(string name, string job)
         {
             Info.Value = new Info() { name = name, job = job };
+        }
+
+        public SetupViewModel FindParent()
+        {
+            this.Test();
+            try
+            {
+                return this.Ancestors<SetupViewModel>();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
     
