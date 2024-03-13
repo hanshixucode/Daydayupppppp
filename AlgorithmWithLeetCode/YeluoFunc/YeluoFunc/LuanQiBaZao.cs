@@ -19,9 +19,29 @@ namespace YeluoFunc
             ride.Invoke(o, null);
             // Iride ride = bike;
             // ride.Stop();
+            var temp = new List<int>() { 1, 3, 2, 4, 5, 7, 6 };
+            var result = BubbleSort(temp);
+        }
+        public static List<int> BubbleSort(List<int> list)
+        {
+            int num = list.Count - 1;
+            int temp = 0;
+            for (int i = num; i > 0; i--)
+            {
+                for (int j = 0; j < num; j++)
+                {
+                    if (list[j] > list[j + 1])
+                    {
+                        temp = list[j];
+                        list[j] = list[j + 1];
+                        list[j + 1] = temp;
+                    }
+                }
+            }
+            return list;
         }
     }
-
+    
     public interface Driver
     {
         void ride();
