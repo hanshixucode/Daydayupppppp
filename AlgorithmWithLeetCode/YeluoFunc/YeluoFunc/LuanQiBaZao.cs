@@ -20,7 +20,7 @@ namespace YeluoFunc
             // Iride ride = bike;
             // ride.Stop();
             var temp = new List<int>() { 1, 3, 2, 4, 5, 7, 6 };
-            var result = BubbleSort(temp);
+            QuickSort(temp, 0, temp.Count -1);
         }
         public static List<int> BubbleSort(List<int> list)
         {
@@ -39,6 +39,38 @@ namespace YeluoFunc
                 }
             }
             return list;
+        }
+
+        public static void QuickSort(List<int> list, int low, int high)
+        {
+            if (low > high)
+            {
+                return;
+            }
+
+            int i = low;
+            int j = high;
+            int temp = list[i];
+            while (i < j)
+            {
+                while (i<j && temp < list[j])
+                {
+                    j--;
+                }
+
+                list[i] = list[j];
+
+                while (i<j && temp >= list[j])
+                {
+                    i++;
+                }
+
+                list[j] = list[i];
+            }
+
+            list[i] = temp;
+            QuickSort(list, low, i-1);
+            QuickSort(list, j+1 ,high);
         }
     }
     
