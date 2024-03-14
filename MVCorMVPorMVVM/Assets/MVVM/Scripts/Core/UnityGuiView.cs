@@ -19,7 +19,7 @@ namespace MVVM
         void OnDisappear();
         void OnDestory();
     }
-    public class UnityGuiView<T>: MonoBehaviour,IView<T> where T : ViewModelBase
+    public class UnityGuiView<T>: MonoBehaviour, IDisposable, IView<T> where T : ViewModelBase
     {
         private bool isInit;
         public readonly BindableProperty<T> ViewModelProperty = new BindableProperty<T>();
@@ -200,6 +200,11 @@ namespace MVVM
                 transform.localScale = Vector3.zero;
                 canvasGroup.interactable = true;
             });
+        }
+
+        public virtual void Dispose()
+        {
+            Console.WriteLine("something dispose");
         }
     }
 }

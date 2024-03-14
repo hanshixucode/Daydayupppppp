@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using MVVM.Extensions;
 using MVVM.Message;
 using UnityEngine;
