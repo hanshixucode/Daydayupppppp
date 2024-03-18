@@ -17,7 +17,7 @@ namespace MVVM
             {
                 Debug.Log("我点击了按钮");
             };
-            MessageAggregator<object>.Instance.Sublisher("OnbtnClick", (sender, args) =>
+            MessageAggregator<object>.Instance. Sublisher("OnbtnClick", (sender, args) =>
             {
                 Debug.Log(args._info);
             });
