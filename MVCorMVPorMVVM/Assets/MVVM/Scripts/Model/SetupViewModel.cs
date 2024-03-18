@@ -13,6 +13,7 @@ namespace MVVM
         public BindableProperty<float> SuccessRate = new BindableProperty<float>();
         public BindableProperty<State> State = new BindableProperty<State>();
         public BindableProperty<Info> Info = new BindableProperty<Info>();
+        public ObservableList<string> test = new ObservableList<string>();
 
         public delegate void OnClickHandler();
         public OnClickHandler OnClick;

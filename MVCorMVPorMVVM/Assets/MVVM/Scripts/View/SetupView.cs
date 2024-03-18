@@ -43,12 +43,16 @@ namespace MVVM
             Binder.Add<string>("Name",NameValueChanged);
             Binder.Add<State>("State",BtnValueChanged);
             Binder.Add<Info>("Info",InfoValueChanged);
+            Binder.AddObservableList<string>("test", delegate(List<string> valye, List<string> value)
+            {
+                Debug.Log(ViewModel.test.ToString());
+            });
 
             var entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerClick;
             entry.callback.AddListener((arg0 => { OnClick();}));
             eventTrigger.triggers.Add(entry);
-            
+
         }
 
         // protected override void OnBindingContextChanged(SetupViewModel oldViewModel, SetupViewModel newViewModel)
@@ -94,6 +98,8 @@ namespace MVVM
         {
             var text = await ChangeAsync();
             ViewModel.Name.Value = nameInput.text + text;
+            ViewModel.test.Value = new List<string>() { ViewModel.Name.Value };
+            ViewModel.test.OnAdd += (item => Debug.Log(item));
             ViewModel.InitInfo(ViewModel.Name.Value, "coder");
         }
 
@@ -105,6 +111,7 @@ namespace MVVM
 
         public void Join()
         {
+            ViewModel.test.Add("321");
             ViewModel.State.Value = State.yes;
             MessageAggregator<object>.Instance.Publisher("OnbtnClick", this, new MessageArgs<object>("Yes"));
         }

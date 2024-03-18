@@ -25,19 +25,48 @@ namespace MVVM
 
             _bindHandlers.Add((model =>
             {
-                GAetPropertyValue<TProperty>(name, model, fieldInfo).OnValueChanged += valueChangedHandler;
+                GetPropertyValue<TProperty>(name, model, fieldInfo).OnValueChanged += valueChangedHandler;
             }));
             
             _unbindHandlers.Add((model =>
             {
-                GAetPropertyValue<TProperty>(name, model, fieldInfo).OnValueChanged -= valueChangedHandler;
+                GetPropertyValue<TProperty>(name, model, fieldInfo).OnValueChanged -= valueChangedHandler;
             }));
             
         }
+        public void AddObservableList<TProperty>(string name, ObservableList<TProperty>.ValueChangedHandler valueChangedHandler)
+        {
+            var fieldInfo = typeof(T).GetField(name, BindingFlags.Instance | BindingFlags.Public);
+            if (fieldInfo == null)
+            {
+                return;
+            }
 
-        private BindableProperty<TProperty> GAetPropertyValue<TProperty>(string name, T viewModel, FieldInfo fieldInfo)
+            _bindHandlers.Add((model =>
+            {
+                GetObservableListValue<TProperty>(name, model, fieldInfo).OnValueChanged += valueChangedHandler;
+            }));
+            
+            _unbindHandlers.Add((model =>
+            {
+                GetObservableListValue<TProperty>(name, model, fieldInfo).OnValueChanged -= valueChangedHandler;
+            }));
+            
+        }
+        private BindableProperty<TProperty> GetPropertyValue<TProperty>(string name, T viewModel, FieldInfo fieldInfo)
         {
             var bindableProperty = fieldInfo.GetValue(viewModel) as BindableProperty<TProperty>;
+            if (bindableProperty == null)
+            {
+                return null;
+            }
+
+            return bindableProperty;
+        }
+        
+        private ObservableList<TProperty> GetObservableListValue<TProperty>(string name, T viewModel, FieldInfo fieldInfo)
+        {
+            var bindableProperty = fieldInfo.GetValue(viewModel) as ObservableList<TProperty>;
             if (bindableProperty == null)
             {
                 return null;
