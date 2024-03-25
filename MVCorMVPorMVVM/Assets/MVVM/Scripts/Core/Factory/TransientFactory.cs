@@ -1,31 +1,33 @@
 ﻿using System;
+using MVVM.Helper;
 
 namespace MVVM.Factory
 {
     /// <summary>
-    /// 对象池工厂
-    /// 生产对象用完后会回收
+    /// 临时对象工厂
+    /// 所获取的对象都是随用随销毁
+    /// 目前都是托管资源工厂...
     /// </summary>
-    public class PoolFactory : IFactory
+    public class TransientFactory : IFactory
     {
         public object AcquireObject(string className)
         {
-            throw new NotImplementedException();
+            return AcquireObject(FactoryHelper.ResolveType(className));
         }
 
         public object AcquireObject(Type type)
         {
-            throw new NotImplementedException();
+            return Activator.CreateInstance(type);
         }
 
         public object AcquireObject<IIstance>() where IIstance : class, new()
         {
-            throw new NotImplementedException();
+            return new IIstance();
         }
 
         public void ReleaseObject(object obj)
         {
-            throw new NotImplementedException();
+            //托管资源.NET回收
         }
     }
 }

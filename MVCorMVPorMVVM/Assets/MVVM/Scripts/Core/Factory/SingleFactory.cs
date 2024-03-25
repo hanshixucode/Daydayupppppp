@@ -3,10 +3,10 @@
 namespace MVVM.Factory
 {
     /// <summary>
-    /// 对象池工厂
-    /// 生产对象用完后会回收
+    /// 单例工厂
+    /// 对象为单例，需要考虑线程安全
     /// </summary>
-    public class PoolFactory : IFactory
+    public class SingleFactory : IFactory
     {
         public object AcquireObject(string className)
         {
