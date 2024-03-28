@@ -37,6 +37,16 @@ namespace MVVM
             test1.TestFactory();
             var test2 = transientFactory.AcquireObject("Test") as Test;
             test2.TestFactory();
+
+            var pool = new PoolFactory(3, true);
+            var obj1 =  pool.AcquireObject(typeof(Test)) as Test;
+            obj1.index = 1;
+            var obj2 =  pool.AcquireObject(typeof(Test));
+            var obj3 =  pool.AcquireObject(typeof(Test));
+            pool.ReleaseObject(obj1);
+            var obj4 =  pool.AcquireObject(typeof(Test))as Test;
+            obj4.index = 4;
+            Debug.Log(obj4.index);
         }
     }
 }
