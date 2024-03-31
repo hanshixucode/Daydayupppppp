@@ -59,7 +59,7 @@ namespace MVVM.Factory
             
             lock (_lock)
             {
-                CachedObjects.Add(type, Activator.CreateInstance(type, new IIstance()));
+                CachedObjects.Add(type, new IIstance());
                 return CachedObjects[type];
             }
         }

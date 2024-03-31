@@ -2,6 +2,12 @@
 
 namespace MVVM.Factory
 {
+    public enum FactoryType
+    {
+        Singleton,
+        Transient,
+        Pool
+    }
     public interface IFactory
     {
         object AcquireObject(string className);

@@ -3,9 +3,17 @@ using UnityEngine;
 
 namespace MVVM.Factory
 {
-    public class Test : IDisposable
+    public interface ITest
+    {
+        void TestFactory();
+    }
+    public class Test : ITest, IDisposable
     {
         public int index { get; set; }
+        public Test(int ss)
+        {
+            
+        }
         public Test()
         {
             
