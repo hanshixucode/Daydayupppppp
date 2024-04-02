@@ -3,6 +3,7 @@ using System.Collections;
 using MVVM.Extensions;
 using MVVM.Factory;
 using MVVM.Inject;
+using MVVM.Log;
 using MVVM.Message;
 using UnityEngine;
 
@@ -56,6 +57,10 @@ namespace MVVM
             obj5.TestFactory();
             var obj6 = ServiceLocator.ResolveInstance<Test>();
             Debug.Log($" obj5 is {obj5.index}, obj6 is {obj6.index}");
+            
+            //测试日志集成策略
+            LogFactory.Instacne.Resolve<ConsoleLogStrategy>().Log("1");
+            LogFactory.Instacne.Resolve<ConsoleLogStrategy>().Log("12", true);
         }
     }
 }
