@@ -45,14 +45,14 @@ namespace MVVM
             //测试注入
             ServiceLocator.RegisterTransient<Test>();
             var obj5 = ServiceLocator.ResolveInstance<Test>();
-            obj5.index = 123;
-            obj5.TestFactory();
-            var obj6 = ServiceLocator.ResolveInstance<Test>();
-            Debug.Log($" obj5 is {obj5.index}, obj6 is {obj6.index}");
+            // obj5.index = 123;
+            // obj5.TestFactory();
+            // var obj6 = ServiceLocator.ResolveInstance<Test>();
+            // Debug.Log($" obj5 is {obj5.index}, obj6 is {obj6.index}");
 
             //测试日志集成策略
-            LogFactory.Instacne.Resolve<ConsoleLogStrategy>().Log("1");
-            LogFactory.Instacne.Resolve<ConsoleLogStrategy>().Log("12", true);
+            // LogFactory.Instacne.Resolve<ConsoleLogStrategy>().Log("1");
+            // LogFactory.Instacne.Resolve<ConsoleLogStrategy>().Log("12", true);
             //测试AOT代理
             Proxy.Proxy.Instance.SetTarget(obj5).SetMethod("TestFactory").SetArgs(new object[] { })
                 .SetInvocationHandler(new LogInvocationHandler()).Invoke();
