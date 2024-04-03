@@ -6,6 +6,7 @@ using MVVM.Inject;
 using MVVM.Log;
 using MVVM.Message;
 using UnityEngine;
+using MVVM.Proxy;
 
 namespace MVVM
 {
@@ -17,23 +18,14 @@ namespace MVVM
         private void Start()
         {
             SetupView.BindingContext = new SetupViewModel();
-            SetupView.BindingContext.OnClick += () =>
-            {
-                Debug.Log("我点击了按钮");
-            };
+            SetupView.BindingContext.OnClick += () => { Debug.Log("我点击了按钮"); };
             //测试消息中心事件绑定
-            MessageAggregator<object>.Instance. Sublisher("OnbtnClick", (sender, args) =>
-            {
-                Debug.Log(args._info);
-            });
+            MessageAggregator<object>.Instance.Sublisher("OnbtnClick", (sender, args) => { Debug.Log(args._info); });
             //测试View生命周期
-            SetupView.Show(false, () =>
-            {
-                Debug.Log("showed");
-            });
+            SetupView.Show(false, () => { Debug.Log("showed"); });
             //测试ViewModel之间数据共享
             var enuma = SetupView.BindingContext.FindParent();
-            
+
             //测试工厂模式
             // var test1 = new Test();
             // test1.TestFactory();
@@ -49,7 +41,7 @@ namespace MVVM
             // var obj4 =  pool.AcquireObject(typeof(Test))as Test;
             // obj4.index = 4;
             // Debug.Log(obj4.index);
-            
+
             //测试注入
             ServiceLocator.RegisterTransient<Test>();
             var obj5 = ServiceLocator.ResolveInstance<Test>();
@@ -57,10 +49,13 @@ namespace MVVM
             obj5.TestFactory();
             var obj6 = ServiceLocator.ResolveInstance<Test>();
             Debug.Log($" obj5 is {obj5.index}, obj6 is {obj6.index}");
-            
+
             //测试日志集成策略
             LogFactory.Instacne.Resolve<ConsoleLogStrategy>().Log("1");
             LogFactory.Instacne.Resolve<ConsoleLogStrategy>().Log("12", true);
+            //测试AOT代理
+            Proxy.Proxy.Instance.SetTarget(obj5).SetMethod("TestFactory").SetArgs(new object[] { })
+                .SetInvocationHandler(new LogInvocationHandler()).Invoke();
         }
     }
 }
