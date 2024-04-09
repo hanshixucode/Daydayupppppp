@@ -17,7 +17,7 @@ public class GameController : ControllerBase
     [HttpGet("{id}")]
     public Player Get([FromRoute] int id)
     {
-        var player = new Player(){Id = id};
+        var player = new Player(){id = id};
         _playerService.DoSomething();
         return player;
     }
@@ -25,6 +25,7 @@ public class GameController : ControllerBase
     [HttpPost("[action]")]
     public Player Post(Player player)
     {
+        player.id = 100;
         return player;
     }
 }
