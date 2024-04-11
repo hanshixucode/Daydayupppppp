@@ -23,9 +23,12 @@ public class GameController : ControllerBase
     }
 
     [HttpPost("[action]")]
-    public Player Post(Player player)
+    public async Task<Player.PlayerResponse> Post(Player.PlayerRequest request)
     {
-        player.id = 100;
-        return player;
+        await Task.CompletedTask;
+        var response = new Player.PlayerResponse();
+        response.player = request.player;
+        response.player.health += request.num;
+        return response;
     }
 }
