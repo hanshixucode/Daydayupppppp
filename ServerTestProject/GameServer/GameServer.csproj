@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.28" />
+      <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
     </ItemGroup>
 
 </Project>
