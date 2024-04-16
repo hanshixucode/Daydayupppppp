@@ -1,4 +1,6 @@
 using CommonLib.MongoDB;
+using CommonLib.Redis;
+using FreeRedis;
 using GameServer.Services;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -13,6 +15,11 @@ builder.Services.AddScoped<PlayerService>();
 builder.Services.Configure<MongoDBSetting>(builder.Configuration.GetSection("MongoDB"));
 //builder.Services.TryAddSingleton<IMongoDb>((provider => new MongoDBService(provider, nameof(MongoDBSetting))));
 builder.Services.AddSingleton<MongoDBService>();
+
+//redis
+builder.Services.Configure<RedisSetting>(builder.Configuration.GetSection("RedisDB"));
+builder.Services.AddSingleton<RedisService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 // builder.Services.AddEndpointsApiExplorer();
 // builder.Services.AddSwaggerGen();

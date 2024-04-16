@@ -2,6 +2,8 @@
 using CommonLib;
 using CommonLib.Models;
 using CommonLib.MongoDB;
+using CommonLib.Redis;
+using FreeRedis;
 using GameServer.Services;
 using MongoDB.Driver;
 
@@ -13,15 +15,17 @@ public class GameController : ControllerBase
 {
     private readonly PlayerService _playerService;
     private IMongoDb ImongoDb;
-    public GameController(PlayerService playerService, MongoDBService mongoDbService)
+    private RedisClient redis;
+    public GameController(PlayerService playerService, MongoDBService mongoDbService, RedisService redisService)
     {
         _playerService = playerService;
         ImongoDb = mongoDbService;
+        redis = redisService.GetRedisClient;
     }
     [HttpGet("{id}")]
     public async Task<Player> Get([FromRoute] int id)
     {
-        var player = new Player(){id = id};
+        Player player = new Player(){id = id};
         _playerService.DoSomething();
         var playerDB = ImongoDb.GetCollection<PlayerInfo>("player");
         var filter = Builders<PlayerInfo>.Filter.Eq("id", player.id);
@@ -30,6 +34,10 @@ public class GameController : ControllerBase
         options.IsUpsert = true;
         options.ReturnDocument = ReturnDocument.After;
         await playerDB.FindOneAndUpdateAsync(filter, update, options);
+        
+        //测试redis
+        await redis.SetAsync<Player>($"{id}", player, 3600);
+        var result = await redis.GetAsync<Player>($"{id}");
         return player;
     }
 
