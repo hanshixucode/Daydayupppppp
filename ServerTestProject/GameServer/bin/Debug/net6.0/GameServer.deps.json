@@ -274,6 +274,7 @@
       "CommonLib/1.0.0": {
         "dependencies": {
           "FreeRedis": "1.2.13",
+          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "6.0.28",
           "Microsoft.Extensions.Configuration": "9.0.0-preview.3.24172.9",
           "Microsoft.Extensions.Options": "9.0.0-preview.3.24172.9",
           "MongoDB.Driver": "2.25.0"
