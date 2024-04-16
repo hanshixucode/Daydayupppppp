@@ -9,7 +9,7 @@
       "GameServer/1.0.0": {
         "dependencies": {
           "CommonLib": "1.0.0",
-          "FreeRedis": "1.2.15",
+          "FreeRedis": "1.2.13",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "6.0.28",
           "Microsoft.Extensions.Configuration": "9.0.0-preview.3.24172.9",
           "Microsoft.Extensions.Options": "9.0.0-preview.3.24172.9",
@@ -49,11 +49,11 @@
           }
         }
       },
-      "FreeRedis/1.2.15": {
+      "FreeRedis/1.2.13": {
         "runtime": {
           "lib/netstandard2.0/FreeRedis.dll": {
-            "assemblyVersion": "1.2.15.0",
-            "fileVersion": "1.2.15.0"
+            "assemblyVersion": "1.2.13.0",
+            "fileVersion": "1.2.13.0"
           }
         }
       },
@@ -273,7 +273,7 @@
       },
       "CommonLib/1.0.0": {
         "dependencies": {
-          "FreeRedis": "1.2.15",
+          "FreeRedis": "1.2.13",
           "Microsoft.Extensions.Configuration": "9.0.0-preview.3.24172.9",
           "Microsoft.Extensions.Options": "9.0.0-preview.3.24172.9",
           "MongoDB.Driver": "2.25.0"
@@ -311,12 +311,12 @@
       "path": "dnsclient/1.6.1",
       "hashPath": "dnsclient.1.6.1.nupkg.sha512"
     },
-    "FreeRedis/1.2.15": {
+    "FreeRedis/1.2.13": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZLWAHqX62Higyn7heYOvRdKE66lWgspgyFWpZueZkR97LiE6YPexa8KlAUHcO8tACTjkzxnspy9JmTo/27Wgog==",
-      "path": "freeredis/1.2.15",
-      "hashPath": "freeredis.1.2.15.nupkg.sha512"
+      "sha512": "sha512-0hk6kpr39M8M9zyftkv85XepC4BRryfN/pF5DalIbKLbvU/1ZsMaQoLTWYwqsv4Jt4Wm4W+yY/YtwZTtkhqo9w==",
+      "path": "freeredis/1.2.13",
+      "hashPath": "freeredis.1.2.13.nupkg.sha512"
     },
     "Microsoft.AspNetCore.JsonPatch/6.0.28": {
       "type": "package",

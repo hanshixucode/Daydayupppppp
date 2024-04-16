@@ -36,8 +36,18 @@ public class GameController : ControllerBase
         await playerDB.FindOneAndUpdateAsync(filter, update, options);
         
         //测试redis
-        await redis.SetAsync<Player>($"{id}", player, 3600);
-        var result = await redis.GetAsync<Player>($"{id}");
+        // var playerinfo = new PlayerInfo() { id = player.id, health = player.health, level = player.level };
+        // redis.HSet("health", playerinfo.id.ToString(), playerinfo);
+        // redis.Expire("health", 3600);
+        var playerinfo = new PlayerInfo() { id = player.id, health = player.health, level = player.level };
+        redis.Set<PlayerInfo>($"{id}", playerinfo, 3600);
+
+        Book book = new Book(){id = 1089,name = "asd123"};
+        redis.HSet("book", book.id.ToString(), book);
+        redis.Expire("book", 3600);
+        
+        // redis.JsonSet("freedis.test", System.Text.Json.JsonSerializer.Serialize(book));
+        // var result = await redis.GetAsync<Player>($"{id}");
         return player;
     }
 
@@ -57,5 +67,11 @@ public class GameController : ControllerBase
         options.ReturnDocument = ReturnDocument.After;
         await playerDB.FindOneAndUpdateAsync(filter, update, options);
         return response;
+    }
+    
+    public class Book
+    {
+        public int id;
+        public string name;
     }
 }
