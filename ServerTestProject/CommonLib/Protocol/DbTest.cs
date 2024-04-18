@@ -4,7 +4,7 @@ public class DbTest
 {
     public class AddTestPlayerRequest
     {
-        public Player player;
+        public CommonLib.Player player;
         public int num;
     }
     
@@ -20,7 +20,7 @@ public class DbTest
     
     public class CommonTestResponse
     {
-        public List<Player> players;
+        public List<CommonLib.Player> players;
         public float timers;
     }
 }

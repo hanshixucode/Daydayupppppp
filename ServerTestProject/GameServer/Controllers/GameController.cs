@@ -70,23 +70,89 @@ public class GameController : ControllerBase
     }
     
     [HttpPost("[action]")]
-    public async Task<Player.PlayerResponse> AddTestPlayer(Player.PlayerRequest request)
+    public async Task<DbTest.CommonTestResponse> AddTestPlayer(DbTest.AddTestPlayerRequest request)
     {
         await Task.CompletedTask;
-        var response = new Player.PlayerResponse();
-        response.player = request.player;
-        response.player.health += request.num;
-        var player = response.player;
-        var playerDB = ImongoDb.GetCollection<PlayerInfo>("player");
-        var filter = Builders<PlayerInfo>.Filter.Eq("id", player.id);
-        var update = Builders<PlayerInfo>.Update.Set("level", player.level).Set("health", player.health);
-        var options = new FindOneAndUpdateOptions<PlayerInfo>();
-        options.IsUpsert = true;
-        options.ReturnDocument = ReturnDocument.After;
-        await playerDB.FindOneAndUpdateAsync(filter, update, options);
+        var s = new System.Diagnostics.Stopwatch();
+        s.Start();
+        var response = new DbTest.CommonTestResponse();
+        response.players = new List<Player>();
+        for (int i = 0; i < request.num; i++)
+        {
+            var player = request.player.Clone();
+            player.id = i;
+            var playerDB = ImongoDb.GetCollection<PlayerInfo>("player");
+            var filter = Builders<PlayerInfo>.Filter.Eq("id", player.id);
+            var update = Builders<PlayerInfo>.Update.Set("level", player.level).Set("health", player.health);
+            var options = new FindOneAndUpdateOptions<PlayerInfo>();
+            options.IsUpsert = true;
+            options.ReturnDocument = ReturnDocument.After;
+            await playerDB.FindOneAndUpdateAsync(filter, update, options);
+            response.players.Add(player);
+        }
+        s.Stop();
+        response.timers = s.ElapsedMilliseconds;
         return response;
     }
     
+    /// <summary>
+    /// 直接从Mongo拿
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    [HttpPost("[action]")]
+    public async Task<DbTest.CommonTestResponse> TestMongoDBGet(DbTest.MongoDbRequest request)
+    {
+        await Task.CompletedTask;
+        var response = new DbTest.CommonTestResponse();
+        response.players = new List<Player>();
+        var playerInfos = await FindAsync(request.num);
+        foreach (var player in playerInfos)
+        {
+            response.players.Add(new Player(){id = player.id, health = player.health,level = player.level});
+        }
+        return response;
+    }
+
+    private async Task<List<PlayerInfo>> FindAsync(int count)
+    {
+        var playerDB = ImongoDb.GetCollection<PlayerInfo>("player");
+        var filter = Builders<PlayerInfo>.Filter.Eq("level", 5);
+        var total = (int)await playerDB.CountDocumentsAsync(filter);
+        var max = Math.Max(200, count);
+        
+        var result = await playerDB.FindAsync(filter, new FindOptions<PlayerInfo, int>()
+        {
+            Limit = max,
+        });
+
+        var ids = await result.ToListAsync();
+        return await GetNodeAsync(ids);
+    }
+
+    private async Task<List<PlayerInfo>> GetNodeAsync(List<int> list)
+    {
+        return null;
+    }
+    
+    
+    // [HttpPost("[action]")]
+    // public async Task<DbTest.CommonTestResponse> TestRedisGet(DbTest.RedisRequest request)
+    // {
+    //     await Task.CompletedTask;
+    //     var response = new Player.PlayerResponse();
+    //     response.player = request.player;
+    //     response.player.health += request.num;
+    //     var player = response.player;
+    //     var playerDB = ImongoDb.GetCollection<PlayerInfo>("player");
+    //     var filter = Builders<PlayerInfo>.Filter.Eq("id", player.id);
+    //     var update = Builders<PlayerInfo>.Update.Set("level", player.level).Set("health", player.health);
+    //     var options = new FindOneAndUpdateOptions<PlayerInfo>();
+    //     options.IsUpsert = true;
+    //     options.ReturnDocument = ReturnDocument.After;
+    //     await playerDB.FindOneAndUpdateAsync(filter, update, options);
+    //     return response;
+    // }
     public class Book
     {
         public int id;
