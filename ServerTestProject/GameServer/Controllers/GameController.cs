@@ -69,6 +69,24 @@ public class GameController : ControllerBase
         return response;
     }
     
+    [HttpPost("[action]")]
+    public async Task<Player.PlayerResponse> AddTestPlayer(Player.PlayerRequest request)
+    {
+        await Task.CompletedTask;
+        var response = new Player.PlayerResponse();
+        response.player = request.player;
+        response.player.health += request.num;
+        var player = response.player;
+        var playerDB = ImongoDb.GetCollection<PlayerInfo>("player");
+        var filter = Builders<PlayerInfo>.Filter.Eq("id", player.id);
+        var update = Builders<PlayerInfo>.Update.Set("level", player.level).Set("health", player.health);
+        var options = new FindOneAndUpdateOptions<PlayerInfo>();
+        options.IsUpsert = true;
+        options.ReturnDocument = ReturnDocument.After;
+        await playerDB.FindOneAndUpdateAsync(filter, update, options);
+        return response;
+    }
+    
     public class Book
     {
         public int id;

@@ -6,11 +6,11 @@ namespace CommonLib.MongoDB;
 
 public class MongoDBService : IMongoDb
 {
-    private IMongoDatabase mondoDb;
+    private IMongoDatabase mongoDb;
     
     public IMongoCollection<T> GetCollection<T>(string name)
     {
-        return mondoDb.GetCollection<T>(name);
+        return mongoDb.GetCollection<T>(name);
     }
     
     // public MongoDBService(IServiceProvider provider, string type)
@@ -20,6 +20,6 @@ public class MongoDBService : IMongoDb
     public MongoDBService(IOptions<MongoDBSetting> dbSettings)
     {
         var mongoClient = new MongoClient(dbSettings.Value.ConnectionString);
-        mondoDb = mongoClient.GetDatabase(dbSettings.Value.DatabaseName);
+        mongoDb = mongoClient.GetDatabase(dbSettings.Value.DatabaseName);
     }
 }
