@@ -11,12 +11,12 @@ namespace GameServer.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class GameController : ControllerBase
+public class PlayerController : ControllerBase
 {
     private readonly PlayerService _playerService;
     private IMongoDb ImongoDb;
     private RedisClient redis;
-    public GameController(PlayerService playerService, MongoDBService mongoDbService, RedisService redisService)
+    public PlayerController(PlayerService playerService, MongoDBService mongoDbService, RedisService redisService)
     {
         _playerService = playerService;
         ImongoDb = mongoDbService;
@@ -90,6 +90,7 @@ public class GameController : ControllerBase
             await playerDB.FindOneAndUpdateAsync(filter, update, options);
             response.players.Add(player);
         }
+        redis.Set<List<Player>>("cacher", response.players, 3600);
         s.Stop();
         response.timers = s.ElapsedMilliseconds;
         return response;
@@ -150,23 +151,18 @@ public class GameController : ControllerBase
     }
     
     
-    // [HttpPost("[action]")]
-    // public async Task<DbTest.CommonTestResponse> TestRedisGet(DbTest.RedisRequest request)
-    // {
-    //     await Task.CompletedTask;
-    //     var response = new Player.PlayerResponse();
-    //     response.player = request.player;
-    //     response.player.health += request.num;
-    //     var player = response.player;
-    //     var playerDB = ImongoDb.GetCollection<PlayerInfo>("player");
-    //     var filter = Builders<PlayerInfo>.Filter.Eq("id", player.id);
-    //     var update = Builders<PlayerInfo>.Update.Set("level", player.level).Set("health", player.health);
-    //     var options = new FindOneAndUpdateOptions<PlayerInfo>();
-    //     options.IsUpsert = true;
-    //     options.ReturnDocument = ReturnDocument.After;
-    //     await playerDB.FindOneAndUpdateAsync(filter, update, options);
-    //     return response;
-    // }
+    [HttpPost("[action]")]
+    public async Task<DbTest.CommonTestResponse> TestRedisGet(DbTest.RedisRequest request)
+    {
+        await Task.CompletedTask;
+        var s = new System.Diagnostics.Stopwatch();
+        s.Start();
+        var response = new DbTest.CommonTestResponse();
+        response.players = await redis.GetAsync<List<Player>>("cacher");
+        s.Stop();
+        response.timers = s.ElapsedMilliseconds;
+        return response;
+    }
     
     public class Book
     {
