@@ -104,6 +104,8 @@ public class GameController : ControllerBase
     public async Task<DbTest.CommonTestResponse> TestMongoDBGet(DbTest.MongoDbRequest request)
     {
         await Task.CompletedTask;
+        var s = new System.Diagnostics.Stopwatch();
+        s.Start();
         var response = new DbTest.CommonTestResponse();
         response.players = new List<Player>();
         var playerInfos = await FindAsync(request.num);
@@ -111,6 +113,8 @@ public class GameController : ControllerBase
         {
             response.players.Add(new Player(){id = player.id, health = player.health,level = player.level});
         }
+        s.Stop();
+        response.timers = s.ElapsedMilliseconds;
         return response;
     }
 
@@ -123,6 +127,7 @@ public class GameController : ControllerBase
         
         var result = await playerDB.FindAsync(filter, new FindOptions<PlayerInfo, int>()
         {
+            Projection = Builders<PlayerInfo>.Projection.Expression(info => info.id),
             Limit = max,
         });
 
@@ -132,7 +137,16 @@ public class GameController : ControllerBase
 
     private async Task<List<PlayerInfo>> GetNodeAsync(List<int> list)
     {
-        return null;
+        var playerDB = ImongoDb.GetCollection<PlayerInfo>("player");
+        var filter = Builders<PlayerInfo>.Filter.In("id", list);
+        var infos = await playerDB.FindAsync(filter);
+        var result = new List<PlayerInfo>();
+
+        await infos.ForEachAsync((info =>
+        {
+            result.Add(info);
+        }));
+        return result;
     }
     
     
@@ -153,6 +167,7 @@ public class GameController : ControllerBase
     //     await playerDB.FindOneAndUpdateAsync(filter, update, options);
     //     return response;
     // }
+    
     public class Book
     {
         public int id;
