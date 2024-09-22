@@ -8,4 +8,7 @@ end
 
 print("enter number")
 a = io.read("*n")
+if a < 0 then
+    a = -a
+end 
 print(fact(a))
