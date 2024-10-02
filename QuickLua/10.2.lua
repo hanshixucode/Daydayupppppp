@@ -25,3 +25,11 @@ b = string.gsub(a, "one", "another")
 print(a)print(b)
 print(#a) -- 获取字符串长度
 print(a..b)
+c = a.."hello"
+
+--强转
+print(10 .. 20)
+
+print(tonumber("123"))
+a = tostring(123)
+print(type(a))
