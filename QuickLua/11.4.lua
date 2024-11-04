@@ -41,3 +41,15 @@ function foo1 (...)
 end
 --select
 print(select(2,"1","2","3"))
+
+local function addaselect(...)
+    local sum1 = 0
+    for i = 1, select("#", ...) do
+        sum1 = sum1 + select(i,...)
+    end
+    return sum1
+end
+
+--table.unpack
+print(table.unpack(t_114)) --111     10      20      30      30
+
