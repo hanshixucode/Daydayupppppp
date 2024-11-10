@@ -52,4 +52,6 @@ end
 
 --table.unpack
 print(table.unpack(t_114)) --111     10      20      30      30
-
+local f = string.find
+local a = {"hello","ll"}
+print(f(table.unpack(a)))
