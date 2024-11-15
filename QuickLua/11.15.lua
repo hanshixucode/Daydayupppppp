@@ -40,3 +40,16 @@ fact1 = function (n)
     end
 end
 print(fact1(3))
+
+--template
+names = {"aa","bb", "cc"}
+grades = {aa= 10,bb =5, cc = 3}
+table.sort(names,function (n1,n2)
+    return grades[n1] > grades[n2]
+end)
+
+function sortfunc(names, grades)
+    table.sort(names,function (n1,n2)
+        return grades[n1] > grades[n2]
+    end)
+end
