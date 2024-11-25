@@ -14,3 +14,5 @@ local oldSin = math.sin
 
 print(oldSin(100))
 print(math.sin(100))
+
+--位和字节
