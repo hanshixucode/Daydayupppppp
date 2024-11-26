@@ -24,6 +24,8 @@ while l do
 end
 ]]--
 --序列化
-f = load("i = i + 1")
-i = 0
-f()
+--local f = load("i = i + 1")
+--local i = 0
+--load("i = i + 1")
+--print(i)
+--loadfile("9.5.lua")
