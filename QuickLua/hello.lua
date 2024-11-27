@@ -12,3 +12,6 @@ if a < 0 then
     a = -a
 end 
 print(fact(a))
+
+local m = require "testmodule"
+m.func1()
