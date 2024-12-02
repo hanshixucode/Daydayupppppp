@@ -60,3 +60,5 @@ p1:move()
 
 --垃圾回收
 print(collectgarbage("count"))
+
+--协程
