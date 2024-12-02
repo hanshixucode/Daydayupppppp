@@ -1,2 +1,2 @@
 
-testarray[2] = nil
+   -- setmetatable(obj,self)
