@@ -658,6 +658,12 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/GithubProgram/Daydayupppppp/ACEU3DTestProjectx/ACEU3DTestProjectx/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>D:/GithubProgram/Daydayupppppp/ACEU3DTestProjectx/ACEU3DTestProjectx/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>D:/GithubProgram/Daydayupppppp/ACEU3DTestProjectx/ACEU3DTestProjectx/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
