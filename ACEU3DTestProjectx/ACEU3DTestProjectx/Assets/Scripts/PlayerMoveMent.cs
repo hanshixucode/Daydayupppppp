@@ -8,6 +8,7 @@ public enum MovementState
     walking = 0,
     sprinting = 1,
     crouching = 2,
+    dashing = 3,
     air
 }
 public class PlayerMoveMent : MonoBehaviour
@@ -15,12 +16,16 @@ public class PlayerMoveMent : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
+    public float dashSpeed;
+    public float dashSpeedChangeFactor;
+    
+    public bool dashing;
     
     public float groundDrag;
     
     public float playerheight;
     public LayerMask whatIsGround;
-    private bool grounded;
+    public bool grounded;
     
     
     public Transform orientation;
@@ -50,27 +55,63 @@ public class PlayerMoveMent : MonoBehaviour
 
     public MovementState state;
 
+    
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
+    private MovementState lastState;
+    private bool keepMomentum;
     private void StateHandler()
     {
-        if (Input.GetKey(crouchKey))
+        if (dashing)
+        {
+            state = MovementState.dashing;
+            desiredMoveSpeed = dashSpeed;
+            speedChangeFactor = dashSpeedChangeFactor;
+        }
+        else if (Input.GetKey(crouchKey))
         {
             state = MovementState.crouching;
-            moveSpeed = crouchSpeed;
+            desiredMoveSpeed = crouchSpeed;
         }
         else if (grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;
+            desiredMoveSpeed = sprintSpeed;
         }
         else if (grounded)
         {
             state = MovementState.walking;
-            moveSpeed = walkSpeed;
+            desiredMoveSpeed = walkSpeed;
         }
         else
         {
             state = MovementState.air;
+            if(desiredMoveSpeed < sprintSpeed)
+                desiredMoveSpeed = walkSpeed;
+            else
+            {
+                desiredMoveSpeed = sprintSpeed;
+            }
         }
+
+        bool hashChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
+        if(lastState == MovementState.dashing)
+            keepMomentum = true;
+        if (hashChanged)
+        {
+            if (keepMomentum)
+            {
+                StopAllCoroutines();
+                StartCoroutine(SmoothlyLerp());
+            }
+            else
+            {
+                StopAllCoroutines();
+                moveSpeed = desiredMoveSpeed;
+            }
+        }
+        lastDesiredMoveSpeed = desiredMoveSpeed;
+        lastState = state;
     }
     // Start is called before the first frame update
     void Start()
@@ -119,7 +160,7 @@ public class PlayerMoveMent : MonoBehaviour
         SpeedControl();
         StateHandler();
         
-        if (grounded)
+        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
             rb.drag = groundDrag;
         else
         {
@@ -163,5 +204,25 @@ public class PlayerMoveMent : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    private float speedChangeFactor;
+    private IEnumerator SmoothlyLerp()
+    {
+        var time = 0f;
+        var difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startValue = moveSpeed;
+
+        float boostFactor = speedChangeFactor;
+
+        while (time < difference)
+        {
+            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time/ difference);
+            time += Time.deltaTime * boostFactor;
+            yield return null;
+        }
+        moveSpeed = desiredMoveSpeed;
+        speedChangeFactor = 1f;
+        keepMomentum = false;
     }
 }
