@@ -75,12 +75,16 @@ public class PlayerMoveMent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         
         startYScale = transform.localScale.y;
     }
-
+    
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -109,7 +113,7 @@ public class PlayerMoveMent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerheight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerheight * 0.9f + 0.2f, whatIsGround);
         
         MyInput();
         SpeedControl();
