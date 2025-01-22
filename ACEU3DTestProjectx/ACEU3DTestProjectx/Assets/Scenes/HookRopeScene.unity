@@ -398,7 +398,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432091953}
-  m_LocalRotation: {x: 0.11559233, y: 0.000000017091047, z: -0.0000000019889261, w: 0.99329674}
+  m_LocalRotation: {x: 0.11559233, y: -0.00000001709104, z: 0.0000000019889252, w: 0.99329674}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2143,7 +2143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.11559233, y: 0.00000003418209, z: -0.000000003977852, w: 0.9932968}
+  m_LocalRotation: {x: 0.11559233, y: -0.000000034182086, z: 0.0000000039778514, w: 0.9932968}
   m_LocalPosition: {x: 0, y: 1.5700002, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2841,6 +2841,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   grounded: 0
+  freezeing: 0
+  activeGrapple: 0
   orientation: {fileID: 2132691206}
   jumpForce: 22
   jumpCooldown: 0.5
@@ -2892,6 +2894,7 @@ MonoBehaviour:
   lr: {fileID: 604294714}
   maxGrappleDistance: 25
   grappleDelayTime: 0.25
+  overshootYAxis: 2
   grapplingCd: 1
   grappleKey: 102
   activePoint: {fileID: 893036250}

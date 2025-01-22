@@ -9,6 +9,7 @@ public enum MovementState
     sprinting = 1,
     crouching = 2,
     dashing = 3,
+    freezeing = 4,
     air
 }
 public class PlayerMoveMent : MonoBehaviour
@@ -26,7 +27,9 @@ public class PlayerMoveMent : MonoBehaviour
     public float playerheight;
     public LayerMask whatIsGround;
     public bool grounded;
-    
+    public bool freezeing;
+
+    public bool activeGrapple;
     
     public Transform orientation;
     
@@ -62,7 +65,13 @@ public class PlayerMoveMent : MonoBehaviour
     private bool keepMomentum;
     private void StateHandler()
     {
-        if (dashing)
+        if (freezeing)
+        {
+            state = MovementState.freezeing;
+            // moveSpeed = 0;
+            // rb.velocity = Vector3.zero;
+        }
+        else if (dashing)
         {
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
@@ -160,7 +169,7 @@ public class PlayerMoveMent : MonoBehaviour
         SpeedControl();
         StateHandler();
         
-        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
+        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !activeGrapple)
             rb.drag = groundDrag;
         else
         {
@@ -175,6 +184,10 @@ public class PlayerMoveMent : MonoBehaviour
 
     private void MoverPlayer()
     {
+        if (activeGrapple)
+        {
+            return;
+        }
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         if(grounded) 
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
@@ -186,6 +199,10 @@ public class PlayerMoveMent : MonoBehaviour
 
     private void SpeedControl()
     {
+        if (activeGrapple)
+        {
+            return;
+        }
         Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
         if (flatVel.magnitude > moveSpeed)
@@ -206,6 +223,21 @@ public class PlayerMoveMent : MonoBehaviour
         readyToJump = true;
     }
 
+    private bool enableMove;
+    public void JumpToPosition(Vector3 targetPos, float tragectoryHeeight)
+    {
+        activeGrapple = true;
+        velocityToSet = CalculateJumpVelocity(transform.position, targetPos, tragectoryHeeight);
+        Invoke(nameof(SetVelocityToSet), 0.1f);
+    }
+
+    private Vector3 velocityToSet;
+
+    private void SetVelocityToSet()
+    {
+        enableMove = true;
+        rb.velocity = velocityToSet;
+    }
     private float speedChangeFactor;
     private IEnumerator SmoothlyLerp()
     {
@@ -224,5 +256,32 @@ public class PlayerMoveMent : MonoBehaviour
         moveSpeed = desiredMoveSpeed;
         speedChangeFactor = 1f;
         keepMomentum = false;
+    }
+
+    public void ResetRestrictions()
+    {
+        activeGrapple = false;
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (enableMove)
+        {
+            enableMove = false;
+            ResetRestrictions();
+            GetComponent<Grappling>().StopGrapple();
+        }
+    }
+
+    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravity = Physics.gravity.y;
+        float displacementY = endPoint.y - startPoint.y;
+        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) 
+                                               + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
+
+        return velocityXZ + velocityY;
     }
 }
