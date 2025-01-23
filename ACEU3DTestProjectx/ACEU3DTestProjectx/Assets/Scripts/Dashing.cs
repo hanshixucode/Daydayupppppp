@@ -11,7 +11,7 @@ public class Dashing : MonoBehaviour
 
     private Rigidbody rb;
 
-    private PlayerMoveMent pm;
+    private PlayerController pm;
 
     public float dashForce;
     public float dashUpWardForce;
@@ -26,12 +26,12 @@ public class Dashing : MonoBehaviour
     public float dashCd;
     private float dashCdTimer;
     
-    public KeyCode dashKey = KeyCode.E;
+    private KeyCode dashKey = KeyCode.LeftShift;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pm = GetComponent<PlayerMoveMent>();
+        pm = GetComponent<PlayerController>();
     }
 
     private void Dash()

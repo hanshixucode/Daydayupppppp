@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Grappling : MonoBehaviour
 {
-    private PlayerMoveMent pm => GetComponent<PlayerMoveMent>();
+    private PlayerController pm => GetComponent<PlayerController>();
 
     public Transform cam;
 
