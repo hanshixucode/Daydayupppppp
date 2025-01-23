@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GrapplingRope_MLab : MonoBehaviour
 {
-    [Header("References")]
+    [FormerlySerializedAs("grappling")] [Header("References")]
     // 引用 Grappling 脚本，用于获取抓钩相关信息
-    public Grappling grappling;
+    public PlayerHook playerHook;
 
     [Header("Settings")]
     // 绳子被分割成的段数，数值越大绳子越平滑
@@ -57,10 +58,10 @@ public class GrapplingRope_MLab : MonoBehaviour
     void DrawRope()
     {
         // 如果没有进行抓钩操作，不绘制绳子
-        if (!grappling.grappling)
+        if (!playerHook.grappling)
         {
             // 将当前抓钩位置设置为枪尖位置
-            currentGrapplePosition = grappling.gunTip.position;
+            currentGrapplePosition = playerHook.gunTip.position;
 
             // 重置弹簧模拟
             spring.Reset();
@@ -88,8 +89,8 @@ public class GrapplingRope_MLab : MonoBehaviour
         spring.Update(Time.deltaTime);
 
         // 获取抓钩点和枪尖的位置
-        Vector3 grapplePoint = grappling.activePoint.position;
-        Vector3 gunTipPosition = grappling.gunTip.position;
+        Vector3 grapplePoint = playerHook.activePoint.position;
+        Vector3 gunTipPosition = playerHook.gunTip.position;
 
         // 找到相对于绳子的向上方向
         Vector3 up = Quaternion.LookRotation((grapplePoint - gunTipPosition).normalized) * Vector3.up;

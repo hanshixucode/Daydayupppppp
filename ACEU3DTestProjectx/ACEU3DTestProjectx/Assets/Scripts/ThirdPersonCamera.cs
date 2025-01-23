@@ -7,7 +7,7 @@ public enum CameraType
     Basic,
     Combat
 }
-public class ThirdPersonCam : MonoBehaviour
+public class ThirdPersonCamera : MonoBehaviour
 {
     public Transform orientation;
 

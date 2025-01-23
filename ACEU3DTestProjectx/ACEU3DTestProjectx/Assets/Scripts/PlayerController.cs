@@ -265,7 +265,7 @@ public class PlayerController : MonoBehaviour
         {
             enableMove = false;
             ResetRestrictions();
-            GetComponent<Grappling>().StopGrapple();
+            GetComponent<PlayerHook>().StopGrapple();
         }
     }
 

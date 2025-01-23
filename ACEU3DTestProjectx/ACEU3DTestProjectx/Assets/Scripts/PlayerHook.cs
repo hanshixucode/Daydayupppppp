@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grappling : MonoBehaviour
+public class PlayerHook : MonoBehaviour
 {
     private PlayerController pm => GetComponent<PlayerController>();
 

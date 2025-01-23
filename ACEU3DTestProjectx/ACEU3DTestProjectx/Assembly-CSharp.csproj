@@ -53,9 +53,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GrapplingRope_MLab.cs" />
-     <Compile Include="Assets\Scripts\Grappling.cs" />
+     <Compile Include="Assets\Scripts\PlayerHook.cs" />
      <Compile Include="Assets\Scripts\Dashing.cs" />
-     <Compile Include="Assets\Scripts\ThirdPersonCam.cs" />
+     <Compile Include="Assets\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
