@@ -68,8 +68,8 @@ public class PlayerController : MonoBehaviour
         if (freezeing)
         {
             state = MovementState.freezeing;
-            // moveSpeed = 0;
-            // rb.velocity = Vector3.zero;
+            desiredMoveSpeed = 0;
+            rb.velocity = Vector3.zero;
         }
         else if (dashing)
         {
@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         SpeedControl();
         StateHandler();
         
-        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !activeGrapple)
+        if ((state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching) && !activeGrapple)
             rb.drag = groundDrag;
         else
         {
