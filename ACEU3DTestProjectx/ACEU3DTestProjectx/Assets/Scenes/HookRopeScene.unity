@@ -158,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 98.4, y: 46.559998}
-  m_SizeDelta: {x: 160, y: 90.19}
+  m_SizeDelta: {x: 160, y: 120.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9925132
 MonoBehaviour:
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "WASD\u79FB\u52A8\nC\u4E0B\u8E72\nSHIFT\u51B2\u523A\nALT\u5207\u6362\u8D70\u8DEF/\u8DD1\u6B65\nF\u94A9\u7EF3"
+  m_Text: "ESC\u9000\u51FA\nWASD\u79FB\u52A8\nC\u4E0B\u8E72\nSHIFT\u51B2\u523A\nALT\u5207\u6362\u8D70\u8DEF/\u8DD1\u6B65\nF\u94A9\u7EF3"
 --- !u!222 &9925133
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3670,7 +3670,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591167221}
-  m_LocalRotation: {x: 0.09252102, y: -0.000000017659856, z: 0.0000000016409463, w: 0.99571073}
+  m_LocalRotation: {x: 0.09252102, y: 0.000000017659858, z: -0.0000000016409465, w: 0.99571073}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
