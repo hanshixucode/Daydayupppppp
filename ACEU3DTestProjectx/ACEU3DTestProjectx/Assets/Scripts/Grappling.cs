@@ -14,8 +14,6 @@ public class Grappling : MonoBehaviour
     public LayerMask whatIsGrappleable;
 
     public LineRenderer lr;
-    
-    public float maxGrappleDistance;
 
     public float grappleDelayTime;
     public float overshootYAxis;
@@ -30,20 +28,13 @@ public class Grappling : MonoBehaviour
     public bool grappling;
 
     public Transform activePoint;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void StartGrapple()
     {
         if(grappleTimer > 0) return;
         grappling = true;
         pm.freezeing = true;
-        lr.enabled = true;
         grapplePoint = activePoint.position;
-        lr.SetPosition(1,grapplePoint);
         Invoke(nameof(ExcuteGrapple), grappleDelayTime);
     }
     
@@ -65,7 +56,6 @@ public class Grappling : MonoBehaviour
         grappling = false;
         pm.freezeing = false;
         grappleTimer = grapplingCd;
-        lr.enabled = false;
     }
     // Update is called once per frame
     void Update()
@@ -74,11 +64,5 @@ public class Grappling : MonoBehaviour
             StartGrapple();
         if(grappleTimer > 0)
             grappleTimer -= Time.deltaTime;
-    }
-
-    private void LateUpdate()
-    {
-        if(grappling)
-            lr.SetPosition(0,gunTip.position);
     }
 }

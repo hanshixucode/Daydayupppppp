@@ -2,21 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// Dave MovementLab - GrapplingRope
-///
-// Content:
-/// - drawing and animating the grappling rope
-/// 
-// Note:
-/// This script is assigned to the grappling gun
-///
-// I learned how to create this script by following along with a YouTube tutorial
-// Credits: https://youtu.be/8nENcDnxeVE
-///
-/// -> if you don't understand the code, just watch the tutorial
-
-
 public class GrapplingRope_MLab : MonoBehaviour
 {
     [Header("References")]
