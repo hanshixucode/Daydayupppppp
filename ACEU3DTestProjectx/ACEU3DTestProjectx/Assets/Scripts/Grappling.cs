@@ -27,7 +27,7 @@ public class Grappling : MonoBehaviour
     
     public KeyCode grappleKey = KeyCode.F;
 
-    private bool grappling;
+    public bool grappling;
 
     public Transform activePoint;
     // Start is called before the first frame update
@@ -40,35 +40,11 @@ public class Grappling : MonoBehaviour
     {
         if(grappleTimer > 0) return;
         grappling = true;
-
         pm.freezeing = true;
-        
-        // RaycastHit hit;
-        // if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
-        // {
-        //     grapplePoint = hit.point;
-        //     Invoke(nameof(ExcuteGrapple), grappleDelayTime);
-        // }
-        // else
-        // {
-        //     grapplePoint = cam.position + cam.forward * maxGrappleDistance;
-        //     Invoke(nameof(StopGrapple), grappleDelayTime);
-        // }
-
-        // var dir = activePoint.position - gunTip.position;
-        // if (Physics.Raycast(gunTip.position, dir, out hit, maxGrappleDistance, whatIsGrappleable))
-        // {
-        //     grapplePoint = activePoint.position;
-        //     Invoke(nameof(ExcuteGrapple), grappleDelayTime);
-        //     lr.enabled = true;
-        //     lr.SetPosition(1,grapplePoint);
-        //     Debug.Log(grapplePoint);
-        // }
         lr.enabled = true;
         grapplePoint = activePoint.position;
         lr.SetPosition(1,grapplePoint);
         Invoke(nameof(ExcuteGrapple), grappleDelayTime);
-        // Debug.DrawRay(gunTip.position, dir, Color.red);
     }
     
     private void ExcuteGrapple()
