@@ -105,7 +105,7 @@ public class PlayerHook : MonoBehaviour
     void Update()
     {
         CheckActiveHookPoint();
-        if (Input.GetKeyDown(grappleKey) && activePoint.canHook)
+        if (Input.GetKeyDown(grappleKey) && activePoint.canHook && !grappling)
         {
             StartGrapple();
         }
