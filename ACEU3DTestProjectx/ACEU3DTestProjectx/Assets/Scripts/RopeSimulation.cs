@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-public class GrapplingRope_MLab : MonoBehaviour
+public class RopeSimulation : MonoBehaviour
 {
-    [FormerlySerializedAs("grappling")] [Header("References")]
-    // 引用 Grappling 脚本，用于获取抓钩相关信息
     public PlayerHook playerHook;
-
-    [Header("Settings")]
+    
     // 绳子被分割成的段数，数值越大绳子越平滑
     public int quality = 200;
 
@@ -30,7 +27,7 @@ public class GrapplingRope_MLab : MonoBehaviour
     public AnimationCurve affectCurve;
 
     // 自定义的弹簧模拟脚本，用于返回动画所需的值
-    private Spring_MLab spring;
+    private SpringSimulation spring;
 
     // 线渲染器组件，用于绘制绳子
     private LineRenderer lr;
@@ -43,7 +40,7 @@ public class GrapplingRope_MLab : MonoBehaviour
         // 获取 LineRenderer 组件引用
         lr = GetComponent<LineRenderer>();
         // 创建 Spring_MLab 实例
-        spring = new Spring_MLab();
+        spring = new SpringSimulation();
         // 设置弹簧模拟的目标值为 0
         spring.SetTarget(0);
     }
@@ -113,7 +110,7 @@ public class GrapplingRope_MLab : MonoBehaviour
     }
 }
 
-public class Spring_MLab
+public class SpringSimulation
 {
     // values explained in the GrapplingRope_MLab script
     // 弹簧的弹性强度，数值越大弹簧的弹性力越大

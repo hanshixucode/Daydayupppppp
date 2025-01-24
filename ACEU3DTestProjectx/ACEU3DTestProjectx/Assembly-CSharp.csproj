@@ -52,13 +52,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GrapplingRope_MLab.cs" />
+     <Compile Include="Assets\Scripts\RopeSimulation.cs" />
      <Compile Include="Assets\Scripts\PlayerHook.cs" />
      <Compile Include="Assets\Scripts\PlayerSprint.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonCamera.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HookPointTip.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -5,30 +5,56 @@ using UnityEngine.UI;
 
 public class HookPointTip : MonoBehaviour
 {
+    public PlayerHook playerHook;
     public Image tipe;
-
     public Transform target;
-    
-    Camera mainCamera => Camera.main;
+    public float showDistance;
+    public float maxDistance;
+    public float minDistance;
+    public LayerMask blockLayer;
 
+    private Camera mainCamera;
     private RectTransform rc => tipe.rectTransform;
-    
     static Rect rt = new Rect(0f, 0f, 1f, 1f);
     private Vector3 screenCenter;
 
-    // Start is called before the first frame update
     void Start()
     {
+        mainCamera = Camera.main;
         screenCenter = new Vector3(Screen.width, Screen.height, 0.0f) / 2;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        float distance = Vector3.Distance(playerHook.transform.position, target.position);
+        
+        bool isBlocked = Physics.Linecast(playerHook.transform.position, target.position, blockLayer);
+        
+        if (isBlocked || distance > showDistance)
+        {
+            tipe.enabled = false;
+            playerHook.allowHook = false;
+            return;
+        }
+        else
+        {
+            tipe.enabled = true;
+        }
+
+        // 根据距离设置UI颜色
+        if (distance >= minDistance && distance <= maxDistance)
+        {
+            tipe.color = Color.green;
+            playerHook.allowHook = true;
+        }
+        else
+        {
+            tipe.color = Color.white;
+            playerHook.allowHook = false;
+        }
+
         Vector3 directionToTarget = target.position - mainCamera.transform.position;
-        
         float angle = Vector3.Angle(mainCamera.transform.forward, directionToTarget.normalized);
-        
         if (angle > 90f)
         {
             tipe.enabled = false;
@@ -40,7 +66,6 @@ public class HookPointTip : MonoBehaviour
         }
 
         Vector3 targetViewPos = mainCamera.WorldToViewportPoint(target.position);
-
         if (targetViewPos.z > 0 && rt.Contains(targetViewPos))
         {
             rc.anchoredPosition = new Vector2((targetViewPos.x - 0.5f) * Screen.width, (targetViewPos.y - 0.5f) * Screen.height);
@@ -49,7 +74,6 @@ public class HookPointTip : MonoBehaviour
         else
         {
             Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(target.position);
-
             if (targetScreenPos.z < 0)
             {
                 targetScreenPos *= -1;
@@ -61,7 +85,7 @@ public class HookPointTip : MonoBehaviour
             Vector3 edgePos = screenCenter + directionFromCenter * d;
             edgePos.z = 0;
             rc.position = edgePos;
-            
+
             float angleToTarget = Mathf.Atan2(directionFromCenter.y, directionFromCenter.x) * Mathf.Rad2Deg;
             rc.rotation = UnityEngine.Quaternion.Euler(0, 0, angleToTarget + 90);
         }

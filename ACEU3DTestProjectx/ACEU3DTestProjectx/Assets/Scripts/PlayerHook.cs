@@ -27,6 +27,8 @@ public class PlayerHook : MonoBehaviour
 
     public bool grappling;
 
+    public bool allowHook;
+
     public Transform activePoint;
 
     private void StartGrapple()
@@ -60,8 +62,11 @@ public class PlayerHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(grappleKey))
+        if (Input.GetKeyDown(grappleKey) && allowHook)
+        {
             StartGrapple();
+        }
+
         if(grappleTimer > 0)
             grappleTimer -= Time.deltaTime;
     }
