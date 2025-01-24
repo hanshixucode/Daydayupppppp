@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerHook : MonoBehaviour
@@ -75,11 +76,31 @@ public class PlayerHook : MonoBehaviour
 
         if (activeList.Count != 0)
         {
-            activePoint = activeList[0];
+            activePoint = CheckPointForward(activeList);
             Debug.Log(string.Join(",", activeList));
         }
     }
 
+    class CheckAngle
+    {
+        public HookPointTip _pointTip;
+        public float _angle;
+    }
+    private HookPointTip CheckPointForward(List<HookPointTip> activeList)
+    {
+        var list = new List<CheckAngle>();
+        foreach (var point in activeList)
+        {
+            Vector3 dir = (point.transform.position - pm.orientation.position).normalized;
+            Vector3 pmDir = pm.orientation.forward;
+
+            float angle = Vector3.Angle(pmDir, dir);
+            list.Add(new CheckAngle(){ _pointTip = point,_angle = angle});
+        }
+
+        var newList = list.OrderBy(CheckAngle => CheckAngle._angle).ToList();
+        return newList[0]._pointTip;
+    }
 // Update is called once per frame
     void Update()
     {
