@@ -8,12 +8,8 @@ public class PlayerHook : MonoBehaviour
 {
     private PlayerController pm => GetComponent<PlayerController>();
 
-    public Transform cam;
-
     public Transform hand;
-
-    public LineRenderer lr;
-
+    
     public float grappleDelayTime;
     public float overshootYAxis;
 
@@ -25,8 +21,7 @@ public class PlayerHook : MonoBehaviour
     public KeyCode grappleKey = KeyCode.F;
 
     public bool grappling;
-
-    public bool allowHook;
+    
 
     public HookPointTip activePoint;
 
@@ -75,7 +70,6 @@ public class PlayerHook : MonoBehaviour
         if (activeList.Count != 0)
         {
             activePoint = CheckPointForward(activeList);
-            //Debug.Log(string.Join(",", activeList));
         }
     }
 
@@ -99,7 +93,7 @@ public class PlayerHook : MonoBehaviour
         var newList = list.OrderBy(CheckAngle => CheckAngle._angle).ToList();
         return newList[0]._pointTip;
     }
-// Update is called once per frame
+    
     void Update()
     {
         CheckActiveHookPoint();

@@ -34,7 +34,7 @@ public class HookPointTip : MonoBehaviour
         if (isBlocked || distance > showDistance)
         {
             tipe.enabled = false;
-            //playerHook.allowHook = false;
+            canHook = false;
             return;
         }
         else
@@ -46,13 +46,11 @@ public class HookPointTip : MonoBehaviour
         {
             tipe.color = Color.green;
             canHook = true;
-            //playerHook.allowHook = true;
         }
         else
         {
             tipe.color = Color.white;
             canHook = false;
-            //playerHook.allowHook = false;
         }
 
         Vector3 directionToTarget = target.position - mainCamera.transform.position;
