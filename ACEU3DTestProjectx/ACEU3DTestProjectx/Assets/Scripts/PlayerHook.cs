@@ -10,9 +10,7 @@ public class PlayerHook : MonoBehaviour
 
     public Transform cam;
 
-    public Transform gunTip;
-
-    public LayerMask whatIsGrappleable;
+    public Transform hand;
 
     public LineRenderer lr;
 
@@ -51,7 +49,7 @@ public class PlayerHook : MonoBehaviour
         float highestPointOnArc = grappleYpos + overshootYAxis;
 
         if (grappleYpos < 0)
-            highestPointOnArc = overshootYAxis;
+            highestPointOnArc = 0.5f;
         pm.JumpToPosition(hookPoint, highestPointOnArc);
         Invoke(nameof(StopGrapple), 1f);
     }

@@ -58,7 +58,7 @@ public class RopeSimulation : MonoBehaviour
         if (!playerHook.grappling)
         {
             // 将当前抓钩位置设置为枪尖位置
-            currentGrapplePosition = playerHook.gunTip.position;
+            currentGrapplePosition = playerHook.hand.position;
 
             // 重置弹簧模拟
             spring.Reset();
@@ -87,7 +87,7 @@ public class RopeSimulation : MonoBehaviour
 
         // 获取抓钩点和枪尖的位置
         Vector3 grapplePoint = playerHook.activePoint.transform.position;
-        Vector3 gunTipPosition = playerHook.gunTip.position;
+        Vector3 gunTipPosition = playerHook.hand.position;
 
         // 找到相对于绳子的向上方向
         Vector3 up = Quaternion.LookRotation((grapplePoint - gunTipPosition).normalized) * Vector3.up;
