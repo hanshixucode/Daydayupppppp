@@ -10,46 +10,48 @@ public class PlayerHook : MonoBehaviour
     public Transform cam;
 
     public Transform gunTip;
-    
+
     public LayerMask whatIsGrappleable;
 
     public LineRenderer lr;
 
     public float grappleDelayTime;
     public float overshootYAxis;
-    
-    private Vector3 grapplePoint;
+
+    private Vector3 hookPoint;
 
     public float grapplingCd;
     private float grappleTimer;
-    
+
     public KeyCode grappleKey = KeyCode.F;
 
     public bool grappling;
 
     public bool allowHook;
 
-    public Transform activePoint;
+    public HookPointTip activePoint;
+
+    public List<HookPointTip> pointList = new List<HookPointTip>();
 
     private void StartGrapple()
     {
-        if(grappleTimer > 0) return;
+        if (grappleTimer > 0) return;
         grappling = true;
         pm.freezeing = true;
-        grapplePoint = activePoint.position;
+        hookPoint = activePoint.transform.position;
         Invoke(nameof(ExcuteGrapple), grappleDelayTime);
     }
-    
+
     private void ExcuteGrapple()
     {
         pm.freezeing = false;
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
-        float grappleYpos = grapplePoint.y - lowestPoint.y;
+        float grappleYpos = hookPoint.y - lowestPoint.y;
         float highestPointOnArc = grappleYpos + overshootYAxis;
 
         if (grappleYpos < 0)
             highestPointOnArc = overshootYAxis;
-        pm.JumpToPosition(grapplePoint, highestPointOnArc);
+        pm.JumpToPosition(hookPoint, highestPointOnArc);
         Invoke(nameof(StopGrapple), 1f);
     }
 
@@ -59,15 +61,35 @@ public class PlayerHook : MonoBehaviour
         pm.freezeing = false;
         grappleTimer = grapplingCd;
     }
-    // Update is called once per frame
+
+    private void CheckActiveHookPoint()
+    {
+        if(grappling)
+            return;
+        var activeList = new List<HookPointTip>();
+        foreach (var point in pointList)
+        {
+            if (point.tipe.enabled && point.canHook)
+                activeList.Add(point);
+        }
+
+        if (activeList.Count != 0)
+        {
+            activePoint = activeList[0];
+            Debug.Log(string.Join(",", activeList));
+        }
+    }
+
+// Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(grappleKey) && allowHook)
+        CheckActiveHookPoint();
+        if (Input.GetKeyDown(grappleKey) && activePoint.canHook)
         {
             StartGrapple();
         }
 
-        if(grappleTimer > 0)
+        if (grappleTimer > 0)
             grappleTimer -= Time.deltaTime;
     }
 }

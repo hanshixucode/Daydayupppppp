@@ -13,6 +13,7 @@ public class HookPointTip : MonoBehaviour
     public float minDistance;
     public LayerMask blockLayer;
 
+    public bool canHook = false;
     private Camera mainCamera;
     private RectTransform rc => tipe.rectTransform;
     static Rect rt = new Rect(0f, 0f, 1f, 1f);
@@ -33,24 +34,25 @@ public class HookPointTip : MonoBehaviour
         if (isBlocked || distance > showDistance)
         {
             tipe.enabled = false;
-            playerHook.allowHook = false;
+            //playerHook.allowHook = false;
             return;
         }
         else
         {
             tipe.enabled = true;
         }
-
-        // 根据距离设置UI颜色
+        
         if (distance >= minDistance && distance <= maxDistance)
         {
             tipe.color = Color.green;
-            playerHook.allowHook = true;
+            canHook = true;
+            //playerHook.allowHook = true;
         }
         else
         {
             tipe.color = Color.white;
-            playerHook.allowHook = false;
+            canHook = false;
+            //playerHook.allowHook = false;
         }
 
         Vector3 directionToTarget = target.position - mainCamera.transform.position;

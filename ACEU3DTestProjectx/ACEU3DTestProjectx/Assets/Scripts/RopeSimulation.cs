@@ -86,7 +86,7 @@ public class RopeSimulation : MonoBehaviour
         spring.Update(Time.deltaTime);
 
         // 获取抓钩点和枪尖的位置
-        Vector3 grapplePoint = playerHook.activePoint.position;
+        Vector3 grapplePoint = playerHook.activePoint.transform.position;
         Vector3 gunTipPosition = playerHook.gunTip.position;
 
         // 找到相对于绳子的向上方向
