@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public float groundDrag;
     
     public float playerheight;
-    public LayerMask whatIsGround;
+    public LayerMask layer;
     public bool grounded;
     public bool freezeing;
 
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerheight * 0.9f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerheight * 0.9f + 0.2f, layer);
         
         MyInput();
         SpeedControl();
