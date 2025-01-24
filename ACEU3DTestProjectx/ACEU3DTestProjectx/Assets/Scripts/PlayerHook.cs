@@ -77,7 +77,7 @@ public class PlayerHook : MonoBehaviour
         if (activeList.Count != 0)
         {
             activePoint = CheckPointForward(activeList);
-            Debug.Log(string.Join(",", activeList));
+            //Debug.Log(string.Join(",", activeList));
         }
     }
 
@@ -105,9 +105,12 @@ public class PlayerHook : MonoBehaviour
     void Update()
     {
         CheckActiveHookPoint();
-        if (Input.GetKeyDown(grappleKey) && activePoint.canHook && !grappling)
+        if (activePoint != null)
         {
-            StartGrapple();
+            if (Input.GetKeyDown(grappleKey) && activePoint.canHook && !grappling)
+            {
+                StartGrapple();
+            }
         }
 
         if (grappleTimer > 0)
